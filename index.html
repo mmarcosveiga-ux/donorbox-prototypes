@@ -6,14 +6,14 @@
 <title>Donorbox — Supporter Segmentation</title>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
-  * { margin: 0; padding: 0; }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
   body { font-family: Inter, -apple-system, BlinkMacSystemFont, sans-serif; overflow: hidden; }
   #root { width: 100vw; height: 100vh; }
-  input, select, button, textarea { font-family: inherit; }
+  input, select, button, textarea { font-family: Inter, -apple-system, BlinkMacSystemFont, sans-serif; font-size: 14px; }
+  input::placeholder { font-family: Inter, -apple-system, BlinkMacSystemFont, sans-serif; color: #6B7280; }
   input[type="number"]::-webkit-inner-spin-button,
   input[type="number"]::-webkit-outer-spin-button { -webkit-appearance: none; margin: 0; }
   input[type="number"] { -moz-appearance: textfield; }
-  input::placeholder, select { font-family: Inter, -apple-system, BlinkMacSystemFont, sans-serif; }
   ::-webkit-scrollbar { width: 6px; }
   ::-webkit-scrollbar-track { background: transparent; }
   ::-webkit-scrollbar-thumb { background: #D1D5DB; border-radius: 3px; }
