@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -42,7 +41,7 @@
   .dbox-df__btn:not(.is-active):hover { background:var(--dbox-bg-neutral); }
   .dbox-df__btn:first-child { margin-left:0;border-radius:var(--dbox-radius-sm) 0 0 var(--dbox-radius-sm); }
   .dbox-df__btn:last-child { border-radius:0 var(--dbox-radius-sm) var(--dbox-radius-sm) 0; }
-  .dbox-df__btn.is-active { background:var(--dbox-bg-surface);color:var(--dbox-text-secondary);font-weight:var(--dbox-font-weight-medium);border:1px solid var(--dbox-border-accent)!important;border-radius:0;z-index:3;position:relative; }
+  .dbox-df__btn.is-active { background:#C2DEFF;color:#1658B5;font-weight:var(--dbox-font-weight-medium);border:1px solid var(--dbox-border-accent)!important;border-radius:0;z-index:3;position:relative; }
   .dbox-df__btn:first-child.is-active { border-radius:var(--dbox-radius-sm) 0 0 var(--dbox-radius-sm); }
   .dbox-df__btn:last-child.is-active { border-radius:0 var(--dbox-radius-sm) var(--dbox-radius-sm) 0; }
   .dbox-df__btn:only-child.is-active { border-radius:var(--dbox-radius-sm); }
@@ -88,6 +87,10 @@
   .dbox-df__tag--first { background:var(--dbox-success-subtle);color:var(--dbox-success-strong);border:1px solid var(--dbox-success-border); }
   .dbox-df__tag--last { background:var(--dbox-bg-accent-hover);color:var(--dbox-primary);border:1px solid var(--dbox-bg-accent-pressed); }
   .dbox-df__tag--alltime { background:var(--dbox-warning-subtle);color:var(--dbox-warning-strong);border:1px solid var(--dbox-warning-border); }
+  /* ── Button tooltips ── */
+  [data-tooltip] { position: relative; }
+  [data-tooltip]::after { content: attr(data-tooltip); position: absolute; bottom: calc(100% + 8px); left: 50%; transform: translateX(-50%); background: #111928; color: #FFF; font-family: Inter, sans-serif; font-size: 12px; font-weight: 500; line-height: 16px; white-space: nowrap; padding: 6px 10px; border-radius: 6px; pointer-events: none; opacity: 0; transition: opacity 0.15s ease; z-index: 200; }
+  [data-tooltip]:hover::after { opacity: 1; }
 </style>
 </head>
 <body>
@@ -564,19 +567,19 @@ window.__App__ = function SupporterSegmentation() {
             <div className="dbox-df" id="dbox-date-filter" style={{ flex: 1, minWidth: 0 }}>
               <div className="dbox-df__row">
                 <div className="dbox-df__group" id="dbox-qual-strip">
-                  <button className="dbox-df__btn" data-q="any" data-label-inactive="Any" data-label-active="Any Donation">Any</button>
-                  <button className="dbox-df__btn" data-q="first" data-label-inactive="First" data-label-active="First Donation">First</button>
-                  <button className="dbox-df__btn" data-q="last" data-label-inactive="Last" data-label-active="Last Donation">Last</button>
+                  <button className="dbox-df__btn" data-q="any" data-label-inactive="Any" data-label-active="Any Donation" data-tooltip="Any Donation">Any</button>
+                  <button className="dbox-df__btn" data-q="first" data-label-inactive="First" data-label-active="First Donation" data-tooltip="First Donation">First</button>
+                  <button className="dbox-df__btn" data-q="last" data-label-inactive="Last" data-label-active="Last Donation" data-tooltip="Last Donation">Last</button>
                 </div>
                 <div style={{ position: "relative" }} id="dbox-pop-anchor">
                   <div className="dbox-df__group" id="dbox-time-strip">
                     <button className="dbox-df__btn" data-t="custom"><svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 12 12" fill="none" style={{flexShrink:0}}><path d="M3.24848 6.99696C3.66186 6.99696 3.99696 6.66186 3.99696 6.24848C3.99696 5.83511 3.66186 5.5 3.24848 5.5C2.83511 5.5 2.5 5.83511 2.5 6.24848C2.5 6.66186 2.83511 6.99696 3.24848 6.99696ZM3.99696 8.74848C3.99696 9.16186 3.66186 9.49696 3.24848 9.49696C2.83511 9.49696 2.5 9.16186 2.5 8.74848C2.5 8.33511 2.83511 8 3.24848 8C3.66186 8 3.99696 8.33511 3.99696 8.74848ZM6.00043 6.99696C6.41381 6.99696 6.74892 6.66186 6.74892 6.24848C6.74892 5.83511 6.41381 5.5 6.00043 5.5C5.58706 5.5 5.25195 5.83511 5.25195 6.24848C5.25195 6.66186 5.58706 6.99696 6.00043 6.99696ZM6.74892 8.74848C6.74892 9.16186 6.41381 9.49696 6.00043 9.49696C5.58706 9.49696 5.25195 9.16186 5.25195 8.74848C5.25195 8.33511 5.58706 8 6.00043 8C6.41381 8 6.74892 8.33511 6.74892 8.74848ZM8.74848 6.99696C9.16186 6.99696 9.49696 6.66186 9.49696 6.24848C9.49696 5.83511 9.16186 5.5 8.74848 5.5C8.33511 5.5 8 5.83511 8 6.24848C8 6.66186 8.33511 6.99696 8.74848 6.99696ZM12 2.5C12 1.11929 10.8807 0 9.5 0H2.5C1.11929 0 0 1.11929 0 2.5V9.5C0 10.8807 1.11929 12 2.5 12H9.5C10.8807 12 12 10.8807 12 9.5V2.5ZM1 4H11V9.5C11 10.3284 10.3284 11 9.5 11H2.5C1.67157 11 1 10.3284 1 9.5V4ZM2.5 1H9.5C10.3284 1 11 1.67157 11 2.5V3H1V2.5C1 1.67157 1.67157 1 2.5 1Z" fill="currentColor"/></svg>Custom</button>
-                    <button className="dbox-df__btn" data-t="today">Today</button>
-                    <button className="dbox-df__btn" data-t="7d">7D</button>
-                    <button className="dbox-df__btn" data-t="30d">30D</button>
-                    <button className="dbox-df__btn" data-t="3m">3M</button>
-                    <button className="dbox-df__btn" data-t="6m">6M</button>
-                    <button className="dbox-df__btn" data-t="12m">12M</button>
+                    <button className="dbox-df__btn" data-t="today" data-tooltip="Today">Today</button>
+                    <button className="dbox-df__btn" data-t="7d" data-tooltip="Last 7 Days">7D</button>
+                    <button className="dbox-df__btn" data-t="30d" data-tooltip="Last 30 Days">30D</button>
+                    <button className="dbox-df__btn" data-t="3m" data-tooltip="Last 3 Months">3M</button>
+                    <button className="dbox-df__btn" data-t="6m" data-tooltip="Last 6 Months">6M</button>
+                    <button className="dbox-df__btn" data-t="12m" data-tooltip="Last 12 Months">12M</button>
                   </div>
                   <div className="dbox-df__popover" id="dbox-custom-pop" role="dialog" aria-label="Custom date range">
                     <div className="dbox-df__pop-body">
@@ -1004,7 +1007,7 @@ root.render(React.createElement(App));
   const Q_INACTIVE = { any: 'Any', first: 'First', last: 'Last' };
   const Q_CHIP     = { any: 'Any donation', first: 'First donation', last: 'Last donation' };
   const CMP_LABELS = { custom_range: 'Custom range', prev_year: 'Prev. year', prev_period: 'Prev. period' };
-  const S = { qualifier:'any', timePreset:null, customApplied:false, radioPreset:'custom', draftStart:'', draftEnd:'', appliedRadio:null, appliedStart:'', appliedEnd:'', compareRadio:'custom_range', compareDraftStart:'', compareDraftEnd:'', compareApplied:false, compareAppliedRadio:null, compareAppliedStart:'', compareAppliedEnd:'', popOpen:false, cmpOpen:false };
+  const S = { qualifier:null, timePreset:null, customApplied:false, radioPreset:'custom', draftStart:'', draftEnd:'', appliedRadio:null, appliedStart:'', appliedEnd:'', compareRadio:'custom_range', compareDraftStart:'', compareDraftEnd:'', compareApplied:false, compareAppliedRadio:null, compareAppliedStart:'', compareAppliedEnd:'', popOpen:false, cmpOpen:false };
   const $ = id => document.getElementById(id);
   const qualStrip=$('dbox-qual-strip'), timeStrip=$('dbox-time-strip'), popAnchor=$('dbox-pop-anchor'), customPop=$('dbox-custom-pop'), radioList=$('dbox-radio-list'), startDate=$('dbox-start-date'), endDate=$('dbox-end-date'), customClear=$('dbox-custom-clear'), customApplyBtn=$('dbox-custom-apply'), cmpWrap=$('dbox-cmp-wrap'), cmpBtn=$('dbox-cmp-btn'), cmpLabel=$('dbox-cmp-label'), cmpChev=$('dbox-cmp-chev'), cmpPop=$('dbox-cmp-pop'), cmpRadioList=$('dbox-cmp-radio-list'), cmpStart=$('dbox-cmp-start'), cmpEnd=$('dbox-cmp-end'), cmpClear=$('dbox-cmp-clear'), cmpApplyBtn=$('dbox-cmp-apply');
   function getAppliedRange() { if (!S.timePreset) return null; if (S.timePreset !== 'custom') return RANGES[S.timePreset]?.() ?? null; if (!S.customApplied) return null; if (S.appliedRadio && S.appliedRadio !== 'custom') return RANGES[S.appliedRadio]?.() ?? null; if (S.appliedStart && S.appliedEnd) return { s: new Date(S.appliedStart.replace(/\//g,'-')), e: new Date(S.appliedEnd.replace(/\//g,'-')) }; return null; }
