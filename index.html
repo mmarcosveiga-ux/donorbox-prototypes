@@ -575,8 +575,8 @@ Find donors through their last gift">Last</button>
                 </div>
                 <div style={{ position: "relative" }} id="dbox-pop-anchor">
                   <div className="dbox-df__group" id="dbox-time-strip">
-                    <button className="dbox-df__btn" data-t="custom"><svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 12 12" fill="none" style={{flexShrink:0}}><path d="M3.24848 6.99696C3.66186 6.99696 3.99696 6.66186 3.99696 6.24848C3.99696 5.83511 3.66186 5.5 3.24848 5.5C2.83511 5.5 2.5 5.83511 2.5 6.24848C2.5 6.66186 2.83511 6.99696 3.24848 6.99696ZM3.99696 8.74848C3.99696 9.16186 3.66186 9.49696 3.24848 9.49696C2.83511 9.49696 2.5 9.16186 2.5 8.74848C2.5 8.33511 2.83511 8 3.24848 8C3.66186 8 3.99696 8.33511 3.99696 8.74848ZM6.00043 6.99696C6.41381 6.99696 6.74892 6.66186 6.74892 6.24848C6.74892 5.83511 6.41381 5.5 6.00043 5.5C5.58706 5.5 5.25195 5.83511 5.25195 6.24848C5.25195 6.66186 5.58706 6.99696 6.00043 6.99696ZM6.74892 8.74848C6.74892 9.16186 6.41381 9.49696 6.00043 9.49696C5.58706 9.49696 5.25195 9.16186 5.25195 8.74848C5.25195 8.33511 5.58706 8 6.00043 8C6.41381 8 6.74892 8.33511 6.74892 8.74848ZM8.74848 6.99696C9.16186 6.99696 9.49696 6.66186 9.49696 6.24848C9.49696 5.83511 9.16186 5.5 8.74848 5.5C8.33511 5.5 8 5.83511 8 6.24848C8 6.66186 8.33511 6.99696 8.74848 6.99696ZM12 2.5C12 1.11929 10.8807 0 9.5 0H2.5C1.11929 0 0 1.11929 0 2.5V9.5C0 10.8807 1.11929 12 2.5 12H9.5C10.8807 12 12 10.8807 12 9.5V2.5ZM1 4H11V9.5C11 10.3284 10.3284 11 9.5 11H2.5C1.67157 11 1 10.3284 1 9.5V4ZM2.5 1H9.5C10.3284 1 11 1.67157 11 2.5V3H1V2.5C1 1.67157 1.67157 1 2.5 1Z" fill="currentColor"/></svg>Custom</button>
-                    <button className="dbox-df__btn" data-t="alltime" data-tooltip="All time">All time</button><button className="dbox-df__btn" data-t="today" data-tooltip="Today">Today</button>
+                    <button className="dbox-df__btn" data-t="custom" id="dbox-custom-btn"><svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 12 12" fill="none" style={{flexShrink:0}}><path d="M3.24848 6.99696C3.66186 6.99696 3.99696 6.66186 3.99696 6.24848C3.99696 5.83511 3.66186 5.5 3.24848 5.5C2.83511 5.5 2.5 5.83511 2.5 6.24848C2.5 6.66186 2.83511 6.99696 3.24848 6.99696ZM3.99696 8.74848C3.99696 9.16186 3.66186 9.49696 3.24848 9.49696C2.83511 9.49696 2.5 9.16186 2.5 8.74848C2.5 8.33511 2.83511 8 3.24848 8C3.66186 8 3.99696 8.33511 3.99696 8.74848ZM6.00043 6.99696C6.41381 6.99696 6.74892 6.66186 6.74892 6.24848C6.74892 5.83511 6.41381 5.5 6.00043 5.5C5.58706 5.5 5.25195 5.83511 5.25195 6.24848C5.25195 6.66186 5.58706 6.99696 6.00043 6.99696ZM6.74892 8.74848C6.74892 9.16186 6.41381 9.49696 6.00043 9.49696C5.58706 9.49696 5.25195 9.16186 5.25195 8.74848C5.25195 8.33511 5.58706 8 6.00043 8C6.41381 8 6.74892 8.33511 6.74892 8.74848ZM8.74848 6.99696C9.16186 6.99696 9.49696 6.66186 9.49696 6.24848C9.49696 5.83511 9.16186 5.5 8.74848 5.5C8.33511 5.5 8 5.83511 8 6.24848C8 6.66186 8.33511 6.99696 8.74848 6.99696ZM12 2.5C12 1.11929 10.8807 0 9.5 0H2.5C1.11929 0 0 1.11929 0 2.5V9.5C0 10.8807 1.11929 12 2.5 12H9.5C10.8807 12 12 10.8807 12 9.5V2.5ZM1 4H11V9.5C11 10.3284 10.3284 11 9.5 11H2.5C1.67157 11 1 10.3284 1 9.5V4ZM2.5 1H9.5C10.3284 1 11 1.67157 11 2.5V3H1V2.5C1 1.67157 1.67157 1 2.5 1Z" fill="currentColor"/></svg>Custom</button>
+                    <button className="dbox-df__btn" data-t="today" data-tooltip="Last 24 Hours">24H</button>
                     <button className="dbox-df__btn" data-t="7d" data-tooltip="Last 7 Days">7D</button>
                     <button className="dbox-df__btn" data-t="30d" data-tooltip="Last 30 Days">30D</button>
                     <button className="dbox-df__btn" data-t="3m" data-tooltip="Last 3 Months">3M</button>
@@ -587,7 +587,7 @@ Find donors through their last gift">Last</button>
                     <div className="dbox-df__pop-body">
                       <div className="dbox-df__pop-left" id="dbox-radio-list">
                         <div className="dbox-df__radio-row" data-p="alltime"><div className="dbox-df__radio-outer"><div className="dbox-df__radio-dot"></div></div><span className="dbox-df__radio-label">All time</span></div><div className="dbox-df__radio-row" data-p="custom"><div className="dbox-df__radio-outer"><div className="dbox-df__radio-dot"></div></div><span className="dbox-df__radio-label">Custom date range</span></div>
-                        <div className="dbox-df__radio-row" data-p="mtd"><div className="dbox-df__radio-outer"><div className="dbox-df__radio-dot"></div></div><span className="dbox-df__radio-label">Month to date</span></div>
+                        <div className="dbox-df__radio-row" data-p="rtoday"><div className="dbox-df__radio-outer"><div className="dbox-df__radio-dot"></div></div><span className="dbox-df__radio-label">Today</span></div><div className="dbox-df__radio-row" data-p="yesterday"><div className="dbox-df__radio-outer"><div className="dbox-df__radio-dot"></div></div><span className="dbox-df__radio-label">Yesterday</span></div><div className="dbox-df__radio-row" data-p="mtd"><div className="dbox-df__radio-outer"><div className="dbox-df__radio-dot"></div></div><span className="dbox-df__radio-label">Month to date</span></div>
                         <div className="dbox-df__radio-row" data-p="ytd"><div className="dbox-df__radio-outer"><div className="dbox-df__radio-dot"></div></div><span className="dbox-df__radio-label">Year to date</span></div>
                         <div className="dbox-df__radio-row" data-p="lastyear"><div className="dbox-df__radio-outer"><div className="dbox-df__radio-dot"></div></div><span className="dbox-df__radio-label">Last Year (2025)</span></div>
                       </div>
@@ -994,7 +994,7 @@ root.render(React.createElement(App));
   function addMonths(d, n) { const x = new Date(d); x.setMonth(x.getMonth() + n); return x; }
   function diffDays(a, b) { return Math.round((b - a) / 86400000) + 1; }
   const RANGES = {
-    today:    () => ({ s: new Date(TODAY), e: new Date(TODAY) }),
+    today:    () => ({ s: addDays(TODAY, -1), e: new Date(TODAY) }),
     '7d':     () => ({ s: addDays(TODAY, -6), e: new Date(TODAY) }),
     '30d':    () => ({ s: addDays(TODAY, -29), e: new Date(TODAY) }),
     '3m':     () => ({ s: addMonths(TODAY, -3), e: new Date(TODAY) }),
@@ -1004,13 +1004,15 @@ root.render(React.createElement(App));
     ytd:      () => ({ s: new Date(TODAY.getFullYear(), 0, 1), e: new Date(TODAY) }),
     lastyear: () => ({ s: new Date(2025, 0, 1), e: new Date(2025, 11, 31) }),
     alltime:  () => null,
+    rtoday:   () => ({ s: addDays(TODAY, -1), e: new Date(TODAY) }),
+    yesterday:() => { const y=addDays(TODAY,-1); return { s:y, e:y }; },
   };
   const Q_DEFAULTS = { any: null, first: '7d', last: '30d' };
   const Q_ACTIVE   = { any: 'Any Donation', first: 'First Donation', last: 'Last Donation' };
   const Q_INACTIVE = { any: 'Any', first: 'First', last: 'Last' };
   const Q_CHIP     = { any: 'Any donation', first: 'First donation', last: 'Last donation' };
   const CMP_LABELS = { custom_range: 'Custom range', prev_year: 'Prev. year', prev_period: 'Prev. period' };
-  const S = { qualifier:'any', timePreset:'alltime', customApplied:false, userChangedTime:false, radioPreset:'custom', draftStart:'', draftEnd:'', appliedRadio:null, appliedStart:'', appliedEnd:'', compareRadio:'custom_range', compareDraftStart:'', compareDraftEnd:'', compareApplied:false, compareAppliedRadio:null, compareAppliedStart:'', compareAppliedEnd:'', popOpen:false, cmpOpen:false };
+  const S = { qualifier:'any', timePreset:'custom', customApplied:true, userChangedTime:false, radioPreset:'alltime', draftStart:'', draftEnd:'', appliedRadio:'alltime', appliedStart:'', appliedEnd:'', compareRadio:'custom_range', compareDraftStart:'', compareDraftEnd:'', compareApplied:false, compareAppliedRadio:null, compareAppliedStart:'', compareAppliedEnd:'', popOpen:false, cmpOpen:false };
   const $ = id => document.getElementById(id);
   const qualStrip=$('dbox-qual-strip'), timeStrip=$('dbox-time-strip'), popAnchor=$('dbox-pop-anchor'), customPop=$('dbox-custom-pop'), radioList=$('dbox-radio-list'), startDate=$('dbox-start-date'), endDate=$('dbox-end-date'), customClear=$('dbox-custom-clear'), customApplyBtn=$('dbox-custom-apply'), cmpWrap=$('dbox-cmp-wrap'), cmpBtn=$('dbox-cmp-btn'), cmpLabel=$('dbox-cmp-label'), cmpChev=$('dbox-cmp-chev'), cmpPop=$('dbox-cmp-pop'), cmpRadioList=$('dbox-cmp-radio-list'), cmpStart=$('dbox-cmp-start'), cmpEnd=$('dbox-cmp-end'), cmpClear=$('dbox-cmp-clear'), cmpApplyBtn=$('dbox-cmp-apply');
   function getAppliedRange() { if (!S.timePreset) return null; if (S.timePreset !== 'custom') return RANGES[S.timePreset]?.() ?? null; if (!S.customApplied) return null; if (S.appliedRadio === 'alltime') return null; if (S.appliedRadio && S.appliedRadio !== 'custom') return RANGES[S.appliedRadio]?.() ?? null; if (S.appliedStart && S.appliedEnd) return { s: new Date(S.appliedStart.replace(/\//g,'-')), e: new Date(S.appliedEnd.replace(/\//g,'-')) }; return null; }
@@ -1027,7 +1029,19 @@ root.render(React.createElement(App));
   function updateCmpApply() { cmpApplyBtn.disabled=!(S.compareRadio!=='custom_range'||(S.compareDraftStart&&S.compareDraftEnd)); }
   function renderQualifier() { qualStrip.querySelectorAll('[data-q]').forEach(tab => { const active=tab.dataset.q===S.qualifier; tab.textContent=active?Q_ACTIVE[tab.dataset.q]:Q_INACTIVE[tab.dataset.q]; tab.classList.toggle('is-active',active); }); }
   function renderCompareBtn() { if(S.compareApplied&&S.compareAppliedRadio){ cmpBtn.classList.add('is-active'); cmpLabel.innerHTML=`<span class="lbl">vs </span><span class="val">${CMP_LABELS[S.compareAppliedRadio]}</span>`; } else { cmpBtn.classList.remove('is-active'); cmpLabel.innerHTML=`<span class="lbl">Compared to</span>`; } }
-  function render() { renderQualifier(); renderCompareBtn(); }
+  const RADIO_LABELS = { alltime:'All time', custom:'Custom', rtoday:'Today', yesterday:'Yesterday', mtd:'Month to date', ytd:'Year to date', lastyear:'Last Year (2025)' };
+  const customBtn = document.getElementById('dbox-custom-btn');
+  function renderCustomBtn() {
+    if (!customBtn) return;
+    const calIcon = customBtn.querySelector('svg');
+    const label = S.timePreset === 'custom' && S.customApplied && S.appliedRadio
+      ? RADIO_LABELS[S.appliedRadio] || 'Custom'
+      : 'All time';
+    customBtn.innerHTML = '';
+    if (calIcon) customBtn.appendChild(calIcon.cloneNode(true));
+    customBtn.appendChild(document.createTextNode(label));
+  }
+  function render() { renderQualifier(); renderCompareBtn(); renderCustomBtn(); }
   function emitChange() {
     const range = getAppliedRange();
     if (typeof window.__dboxDateFilterChange === 'function') {
@@ -1040,7 +1054,7 @@ root.render(React.createElement(App));
     }
   }
   qualStrip.addEventListener('click', e => { const t=e.target.closest('[data-q]'); if(!t) return; if(S.qualifier===t.dataset.q){ S.qualifier=null; } else { S.qualifier=t.dataset.q; applyQualifierDefault(S.qualifier); } render(); emitChange(); });
-  timeStrip.addEventListener('click', e => { const t=e.target.closest('[data-t]'); if(!t) return; const p=t.dataset.t; S.userChangedTime=true; if(p==='custom'){ S.timePreset='custom'; setActiveTimeTab('custom'); openCustomPop(); } else if(p==='alltime'){ if(S.timePreset===p){ S.timePreset=null; setActiveTimeTab(null); } else { S.timePreset='alltime'; setActiveTimeTab('alltime'); closeCustomPop(); } render(); emitChange(); } else { if(S.timePreset===p){ S.userChangedTime=false; applyQualifierDefault(S.qualifier); emitChange(); } else { S.timePreset=p; setActiveTimeTab(p); closeCustomPop(); } render(); emitChange(); } });
+  timeStrip.addEventListener('click', e => { const t=e.target.closest('[data-t]'); if(!t) return; const p=t.dataset.t; S.userChangedTime=true; if(p==='custom'){ S.timePreset='custom'; setActiveTimeTab('custom'); openCustomPop(); } else { if(S.timePreset===p){ S.userChangedTime=false; applyQualifierDefault(S.qualifier); emitChange(); } else { S.timePreset=p; setActiveTimeTab(p); closeCustomPop(); } render(); emitChange(); } });
   radioList.addEventListener('click', e => { const r=e.target.closest('[data-p]'); if(!r) return; S.radioPreset=r.dataset.p; syncRadioList(radioList,S.radioPreset,'data-p'); setCustomInputs(S.radioPreset); updateCustomApply(); });
   startDate.addEventListener('input', e => { S.draftStart=e.target.value; updateCustomApply(); });
   endDate.addEventListener('input', e => { S.draftEnd=e.target.value; updateCustomApply(); });
@@ -1053,7 +1067,9 @@ root.render(React.createElement(App));
   cmpClear.addEventListener('click', () => { S.compareApplied=false; S.compareAppliedRadio=null; S.compareAppliedStart=''; S.compareAppliedEnd=''; S.compareRadio='custom_range'; S.compareDraftStart=''; S.compareDraftEnd=''; closeCmpPop(); render(); });
   cmpApplyBtn.addEventListener('click', () => { S.compareApplied=true; S.compareAppliedRadio=S.compareRadio; if(S.compareRadio==='custom_range'){ S.compareAppliedStart=S.compareDraftStart; S.compareAppliedEnd=S.compareDraftEnd; } else { const r=getCmpPresetRange(S.compareRadio); if(r){ S.compareAppliedStart=fmtD(r.s); S.compareAppliedEnd=fmtD(r.e); } } closeCmpPop(); render(); });
   document.addEventListener('click', e => { if(S.popOpen&&!popAnchor.contains(e.target)) closeCustomPop(); if(S.cmpOpen&&!cmpWrap.contains(e.target)) closeCmpPop(); });
-  setActiveTimeTab('alltime');
+  syncRadioList(radioList, 'alltime', 'data-p');
+  setCustomInputs('alltime');
+  setActiveTimeTab('custom');
   render();
 })();
 </script>
