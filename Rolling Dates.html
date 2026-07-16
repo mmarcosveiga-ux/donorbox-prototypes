@@ -1,0 +1,376 @@
+ 1 <!DOCTYPE html>                                                                                                                                                       
+    2 <html lang="en">                                                                                                                                                      
+    3 <head>                                                                                                                                                                
+    4   <meta charset="UTF-8">
+    5   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    6   <title>Date Range Filter — Donorbox Preview</title>
+    7   <link rel="preconnect" href="https://fonts.googleapis.com">
+    8   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    9   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+   10   <style>
+   11     /* ── Design Tokens ─────────────────────────────────────────── */
+   12     :root {
+   13       --dbox-color-background-default: #FAFAFA;
+   14       --dbox-color-background-surface: #FFFFFF;
+   15       --dbox-color-background-neutral: #F3F4F6;
+   16       --dbox-color-background-accent-subtle: #E0EEFF;
+   17       --dbox-color-background-accent-primary: #128AED;
+   18       --dbox-color-background-accent-disabled: #D1D5DB;
+   19       --dbox-color-background-secondary-hover: #EBF4FF;
+   20       --dbox-color-text-default: #111928;
+   21       --dbox-color-text-secondary: #1F2A37;
+   22       --dbox-color-text-tertiary: #6B7280;
+   23       --dbox-color-text-inverse: #FFFFFF;
+   24       --dbox-color-border-default: #D1D5DB;
+   25       --dbox-color-border-subtle: #E5E7EB;
+   26       --dbox-color-border-accent: #128AED;
+   27       --dbox-border-radius-sm: 4px;
+   28       --dbox-border-radius-md: 8px;
+   29       --dbox-spacing-xs: 4px;
+   30       --dbox-spacing-sm: 8px;
+   31       --dbox-spacing-md: 12px;
+   32       --dbox-spacing-lg: 16px;
+   33       --dbox-spacing-2xl: 24px;
+   34       --dbox-font-size-xs: 12px;
+   35       --dbox-font-size-sm: 14px;
+   36       --dbox-font-weight-medium: 500;
+   37       --dbox-font-weight-semibold: 600;
+   38       --dbox-line-height-xs: 16px;
+   39       --dbox-line-height-sm: 20px;
+   40     }
+   41
+   42     /* ── Reset ─────────────────────────────────────────────────── */
+   43     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+   44     body {
+   45       font-family: "Inter", system-ui, sans-serif;
+   46       background: #F3F4F6;
+   47       min-height: 100vh;
+   48       display: flex;
+   49       align-items: flex-start;
+   50       justify-content: center;
+   51       padding: 48px 24px;
+   52       color: var(--dbox-color-text-default);
+   53     }
+   54
+   55     /* ── Component ─────────────────────────────────────────────── */
+   56     .dbox-date-range-filter {
+   57       display: flex;
+   58       flex-direction: column;
+   59       background-color: var(--dbox-color-background-surface);
+   60       border: 1px solid var(--dbox-color-border-subtle);
+   61       border-radius: var(--dbox-border-radius-md);
+   62       box-shadow: 0 4px 6px -1px rgba(0,0,0,.10), 0 2px 4px -2px rgba(0,0,0,.05);
+   63       overflow: hidden;
+   64     }
+   65
+   66     .dbox-date-range-filter__body {
+   67       display: flex;
+   68       gap: var(--dbox-spacing-2xl);
+   69       padding: var(--dbox-spacing-lg) var(--dbox-spacing-2xl);
+   70     }
+   71
+   72     /* Left — donation types */
+   73     .dbox-date-range-filter__donation-types {
+   74       display: flex;
+   75       flex-direction: column;
+   76       gap: var(--dbox-spacing-sm);
+   77       width: 192px;
+   78       flex-shrink: 0;
+   79     }
+   80
+   81     .dbox-date-range-filter__option {
+   82       display: flex;
+   83       gap: var(--dbox-spacing-sm);
+   84       align-items: flex-start;
+   85       min-height: 40px;
+   86       padding: var(--dbox-spacing-sm) 0;
+   87       cursor: pointer;
+   88     }
+   89
+   90     .dbox-date-range-filter__option > input[type="radio"] {
+   91       appearance: none;
+   92       -webkit-appearance: none;
+   93       width: 20px;
+   94       height: 20px;
+   95       border: 1px solid var(--dbox-color-border-default);
+   96       border-radius: 50%;
+   97       background-color: var(--dbox-color-background-surface);
+   98       position: relative;
+   99       flex-shrink: 0;
+  100       margin-top: 2px;
+  101       cursor: pointer;
+  102       transition: border-color .1s, background-color .1s;
+  103     }
+  104
+  105     .dbox-date-range-filter__option > input[type="radio"]:checked {
+  106       background-color: var(--dbox-color-background-accent-primary);
+  107       border-color: var(--dbox-color-border-accent);
+  108     }
+  109
+  110     .dbox-date-range-filter__option > input[type="radio"]:checked::after {
+  111       content: '';
+  112       position: absolute;
+  113       top: 50%; left: 50%;
+  114       transform: translate(-50%, -50%);
+  115       width: 8px; height: 8px;
+  116       background-color: var(--dbox-color-background-surface);
+  117       border-radius: 50%;
+  118     }
+  119
+  120     .dbox-date-range-filter__option > input[type="radio"]:focus-visible {
+  121       outline: 2px solid var(--dbox-color-border-accent);
+  122       outline-offset: 2px;
+  123     }
+  124
+  125     .dbox-date-range-filter__option-info {
+  126       display: flex;
+  127       flex-direction: column;
+  128       min-width: 0;
+  129     }
+  130
+  131     .dbox-date-range-filter__option-title {
+  132       font-size: var(--dbox-font-size-sm);
+  133       font-weight: var(--dbox-font-weight-medium);
+  134       color: var(--dbox-color-text-default);
+  135       line-height: var(--dbox-line-height-sm);
+  136     }
+  137
+  138     .dbox-date-range-filter__option-desc {
+  139       font-size: var(--dbox-font-size-xs);
+  140       font-weight: var(--dbox-font-weight-medium);
+  141       color: var(--dbox-color-text-tertiary);
+  142       line-height: var(--dbox-line-height-xs);
+  143     }
+  144
+  145     /* Divider */
+  146     .dbox-date-range-filter__divider {
+  147       width: 1px;
+  148       align-self: stretch;
+  149       background-color: var(--dbox-color-border-subtle);
+  150       flex-shrink: 0;
+  151     }
+  152
+  153     /* Right — date section */
+  154     .dbox-date-range-filter__date-section {
+  155       display: flex;
+  156       flex-direction: column;
+  157       gap: var(--dbox-spacing-lg);
+  158       padding-top: var(--dbox-spacing-md);
+  159       width: 329px;
+  160     }
+  161
+  162     .dbox-date-range-filter__timeframe {
+  163       display: flex;
+  164       flex-direction: column;
+  165       gap: var(--dbox-spacing-sm);
+  166     }
+  167
+  168     .dbox-date-range-filter__section-label {
+  169       font-size: var(--dbox-font-size-xs);
+  170       font-weight: var(--dbox-font-weight-medium);
+  171       color: var(--dbox-color-text-secondary);
+  172       line-height: var(--dbox-line-height-xs);
+  173     }
+  174
+  175     .dbox-date-range-filter__chips {
+  176       display: flex;
+  177       flex-wrap: wrap;
+  178       gap: var(--dbox-spacing-xs);
+  179     }
+  180
+  181     .dbox-date-range-filter__chips--stretch > .dbox-date-range-filter__chip {
+  182       flex: 1 0 0;
+  183     }
+  184
+  185     .dbox-date-range-filter__chip {
+  186       display: inline-flex;
+  187       align-items: center;
+  188       justify-content: center;
+  189       height: 32px;
+  190       padding: 4px var(--dbox-spacing-md);
+  191       background-color: var(--dbox-color-background-surface);
+  192       border: 1px solid var(--dbox-color-border-default);
+  193       border-radius: 9999px;
+  194       font-size: var(--dbox-font-size-xs);
+  195       font-weight: var(--dbox-font-weight-medium);
+  196       font-family: inherit;
+  197       color: var(--dbox-color-text-default);
+  198       line-height: var(--dbox-line-height-xs);
+  199       white-space: nowrap;
+  200       cursor: pointer;
+  201       transition: background-color .1s, border-color .1s;
+  202       overflow: hidden;
+  203     }
+  204
+  205     .dbox-date-range-filter__chip:hover {
+  206       background-color: var(--dbox-color-background-secondary-hover);
+  207     }
+  208
+  209     .dbox-date-range-filter__chip[aria-pressed="true"] {
+  210       background-color: var(--dbox-color-background-accent-subtle);
+  211       border-color: var(--dbox-color-border-accent);
+  212     }
+  213
+  214     .dbox-date-range-filter__chip:focus-visible {
+  215       outline: 2px solid var(--dbox-color-border-accent);
+  216       outline-offset: 2px;
+  217     }
+  218
+  219     /* Text inputs */
+  220     .dbox-text-field {
+  221       display: flex;
+  222       flex-direction: column;
+  223       gap: var(--dbox-spacing-sm);
+  224       width: 100%;
+  225     }
+  226
+  227     .dbox-text-field > label {
+  228       font-size: var(--dbox-font-size-xs);
+  229       font-weight: var(--dbox-font-weight-medium);
+  230       color: var(--dbox-color-text-secondary);
+  231       line-height: var(--dbox-line-height-xs);
+  232     }
+  233
+  234     .dbox-text-field > input[type="date"] {
+  235       width: 100%;
+  236       height: 40px;
+  237       padding: 0 var(--dbox-spacing-md);
+  238       font-size: var(--dbox-font-size-sm);
+  239       font-weight: var(--dbox-font-weight-medium);
+  240       font-family: inherit;
+  241       color: var(--dbox-color-text-default);
+  242       background-color: var(--dbox-color-background-default);
+  243       border: 1px solid var(--dbox-color-border-default);
+  244       border-radius: var(--dbox-border-radius-sm);
+  245       outline: none;
+  246       transition: border-color .1s;
+  247     }
+  248
+  249     .dbox-text-field > input[type="date"]:focus {
+  250       border-color: var(--dbox-color-border-accent);
+  251     }
+  252
+  253     .dbox-text-field > input[type="date"]::-webkit-datetime-edit {
+  254       color: var(--dbox-color-text-tertiary);
+  255     }
+  256
+  257     /* Total Range badge */
+  258     .dbox-date-range-filter__total-range { display: flex; }
+  259
+  260     .dbox-badge {
+  261       display: inline-flex;
+  262       align-items: center;
+  263       gap: 4px;
+  264       height: 20px;
+  265       padding: 0 var(--dbox-spacing-sm);
+  266       border-radius: var(--dbox-border-radius-sm);
+  267       font-size: var(--dbox-font-size-xs);
+  268       font-weight: var(--dbox-font-weight-medium);
+  269       color: var(--dbox-color-text-default);
+  270       background-color: var(--dbox-color-background-neutral);
+  271     }
+  272
+  273     /* Footer */
+  274     .dbox-date-range-filter__footer {
+  275       display: flex;
+  276       align-items: center;
+  277       justify-content: space-between;
+  278       padding: var(--dbox-spacing-lg);
+  279       border-top: 1px solid var(--dbox-color-border-subtle);
+  280     }
+  281
+  282     /* Buttons */
+  283     .dbox-button {
+  284       display: inline-flex;
+  285       align-items: center;
+  286       justify-content: center;
+  287       gap: var(--dbox-spacing-sm);
+  288       height: 32px;
+  289       padding: 6px var(--dbox-spacing-lg);
+  290       border-radius: var(--dbox-border-radius-sm);
+  291       font-size: var(--dbox-font-size-sm);
+  292       font-weight: var(--dbox-font-weight-medium);
+  293       font-family: inherit;
+  294       line-height: var(--dbox-line-height-sm);
+  295       cursor: pointer;
+  296       border: none;
+  297       transition: background-color .1s;
+  298       text-align: center;
+  299       white-space: nowrap;
+  300     }
+  301
+  302     .dbox-button--transparent {
+  303       background-color: transparent;
+  304       color: var(--dbox-color-text-secondary);
+  305     }
+  306
+  307     .dbox-button--transparent:hover {
+  308       background-color: var(--dbox-color-background-neutral);
+  309     }
+  310
+  311     .dbox-button--primary {
+  312       background-color: var(--dbox-color-background-accent-primary);
+  313       color: var(--dbox-color-text-inverse);
+  314     }
+  315
+  316     .dbox-button--primary:hover {
+  317       background-color: #056BBF;
+  318     }
+  319
+  320     .dbox-button--primary:disabled {
+  321       background-color: var(--dbox-color-background-accent-disabled);
+  322       cursor: not-allowed;
+  323     }
+  324   </style>
+  325 </head>
+  326 <body>
+  327   <div class="dbox-date-range-filter">
+  328     <div class="dbox-date-range-filter__body">
+  329
+  330       <!-- Left: Donation type -->
+  331       <div class="dbox-date-range-filter__donation-types">
+  332         <label class="dbox-date-range-filter__option">
+  333           <input type="radio" name="donation_type" value="any" checked>
+  334           <div class="dbox-date-range-filter__option-info">
+  335             <span class="dbox-date-range-filter__option-title">Any donation</span>
+  336             <span class="dbox-date-range-filter__option-desc">Donations that occurred during this time</span>
+  337           </div>
+  338         </label>
+  339
+  340         <label class="dbox-date-range-filter__option">
+  341           <input type="radio" name="donation_type" value="first">
+  342           <div class="dbox-date-range-filter__option-info">
+  343             <span class="dbox-date-range-filter__option-title">First donation</span>
+  344             <span class="dbox-date-range-filter__option-desc">Find donors through their first gift</span>
+  345           </div>
+  346         </label>
+  347
+  348         <label class="dbox-date-range-filter__option">
+  349           <input type="radio" name="donation_type" value="last">
+  350           <div class="dbox-date-range-filter__option-info">
+  351             <span class="dbox-date-range-filter__option-title">Last donation</span>
+  352             <span class="dbox-date-range-filter__option-desc">Find donors through their last gift</span>
+  353           </div>
+  354         </label>
+  355       </div>
+  356
+  357       <div class="dbox-date-range-filter__divider" aria-hidden="true"></div>
+  358
+  359       <!-- Right: Timeframe + dates -->
+  360       <div class="dbox-date-range-filter__date-section">
+  361         <div class="dbox-date-range-filter__timeframe">
+  362           <span class="dbox-date-range-filter__section-label">Timeframe</span>
+  363
+  364           <div class="dbox-date-range-filter__chips">
+  365             <button class="dbox-date-range-filter__chip" aria-pressed="true"  type="button" data-timeframe="custom">Custom</button>
+  366             <button class="dbox-date-range-filter__chip" aria-pressed="false" type="button" data-timeframe="today">Today</button>
+  367             <button class="dbox-date-range-filter__chip" aria-pressed="false" type="button" data-timeframe="24h">24H</button>
+  368             <button class="dbox-date-range-filter__chip" aria-pressed="false" type="button" data-timeframe="7d">7D</button>
+  369             <button class="dbox-date-range-filter__chip" aria-pressed="false" type="button" data-timeframe="30d">30D</button>
+  370             <button class="dbox-date-range-filter__chip" aria-pressed="false" type="button" data-timeframe="3m">3M</button>
+  371           </div>
+  372
+  373           <div class="dbox-date-range-filter__chips dbox-date-range-filter__chips--stretch">
+  374             <button class="dbox-date-range-filter__chip" aria-pressed="false" type="button" data-timeframe="12m">12M</button>
+  375             <button class="dbox-date-range-filter__chip" aria-pressed="false" type="button" data-timeframe="mtd">MTD</button>
+  376             <button class="dbox-date-range-filter__chip" aria-pressed="false" type="button" data-timeframe="qtd">QTD</button>
