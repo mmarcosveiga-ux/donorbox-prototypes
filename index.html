@@ -52,12 +52,12 @@
   .dbox-df__popover { display:none;position:absolute;top:calc(100% + 6px);left:0;background:var(--dbox-bg-surface);border:1px solid var(--dbox-border-subtle);border-radius:var(--dbox-radius-2xl);width:523px;z-index:100;flex-direction:column;box-shadow:var(--dbox-shadow-md); }
   .dbox-df__popover.is-open { display:flex; }
   .dbox-df__popover--right { left:auto;right:0; }
-  .dbox-df__pop-body { display:flex;padding:var(--dbox-space-3); }
-  .dbox-df__pop-left { width:192px;flex-shrink:0;display:flex;flex-direction:column;gap:0; }
-  .dbox-df__pop-divider { width:1px;background:var(--dbox-border-subtle);margin:0 var(--dbox-space-3);flex-shrink:0;align-self:stretch; }
-  .dbox-df__pop-right { flex:1;min-width:0;display:flex;flex-direction:column;gap:var(--dbox-space-2); }
+  .dbox-df__pop-body { display:flex;gap:24px;padding:16px 24px; }
+  .dbox-df__pop-left { width:164px;flex-shrink:0;display:flex;flex-direction:column;gap:0; }
+  .dbox-df__pop-divider { width:1px;background:var(--dbox-border-subtle);flex-shrink:0;align-self:stretch; }
+  .dbox-df__pop-right { width:224px;flex-shrink:0;display:flex;flex-direction:column;gap:16px;padding-top:12px;padding-bottom:0; }
   .dbox-df__pop-hint { font-size:var(--dbox-font-size-sm);color:var(--dbox-text-secondary);line-height:var(--dbox-line-height-sm);padding-top:var(--dbox-space-1); }
-  .dbox-df__radio-row { display:flex;align-items:center;gap:var(--dbox-space-1-5);padding:10px var(--dbox-space-1);cursor:pointer;user-select:none;border-radius:var(--dbox-radius-md); }
+  .dbox-df__radio-row { display:flex;align-items:center;gap:8px;height:40px;padding:8px 0;cursor:pointer;user-select:none;border-radius:var(--dbox-radius-md); }
   .dbox-df__radio-row:hover { background:var(--dbox-bg-neutral); }
   .dbox-df__radio-outer { width:20px;height:20px;border-radius:var(--dbox-radius-full);border:2px solid var(--dbox-border-default);flex-shrink:0;display:flex;align-items:center;justify-content:center;background:var(--dbox-bg-surface); }
   .dbox-df__radio-row.is-selected .dbox-df__radio-outer { background:var(--dbox-accent);border-color:var(--dbox-accent); }
@@ -66,16 +66,21 @@
   .dbox-df__radio-label { font-size:var(--dbox-font-size-sm);font-weight:var(--dbox-font-weight-medium);color:var(--dbox-text-default);line-height:var(--dbox-line-height-sm); }
   .dbox-df__field { display:flex;flex-direction:column;gap:var(--dbox-space-1); }
   .dbox-df__label { font-size:var(--dbox-font-size-xs);font-weight:var(--dbox-font-weight-medium);color:var(--dbox-text-secondary);line-height:var(--dbox-line-height-xs); }
-  .dbox-df__input { width:100%;height:40px;padding:0 var(--dbox-space-1-5);border:1px solid var(--dbox-border-default);border-radius:var(--dbox-radius-lg);background:var(--dbox-bg-default);font-family:var(--dbox-font);font-size:var(--dbox-font-size-sm);color:var(--dbox-text-default); }
+  .dbox-df__input { width:100%;height:40px;padding:8px 12px;border:1px solid var(--dbox-border-default);border-radius:8px;background:var(--dbox-bg-default);font-family:var(--dbox-font);font-size:var(--dbox-font-size-sm);color:var(--dbox-text-default);box-sizing:border-box; }
   .dbox-df__input:focus { outline:none;border-color:var(--dbox-border-accent);background:var(--dbox-bg-surface); }
   .dbox-df__input::placeholder { color:var(--dbox-text-disabled); }
   .dbox-df__input:disabled { background:var(--dbox-bg-neutral);color:var(--dbox-text-tertiary);cursor:not-allowed; }
-  .dbox-df__footer { display:flex;align-items:center;justify-content:space-between;padding:var(--dbox-space-2) var(--dbox-space-3);border-top:1px solid var(--dbox-border-subtle); }
+  .dbox-df__footer { display:flex;align-items:center;justify-content:space-between;padding:16px;border-top:1px solid var(--dbox-border-subtle); }
   .dbox-df__btn-tertiary { height:32px;padding:0 var(--dbox-space-2);background:transparent;border:none;border-radius:var(--dbox-radius-sm);font-family:var(--dbox-font);font-size:var(--dbox-font-size-sm);font-weight:var(--dbox-font-weight-medium);color:var(--dbox-text-secondary);cursor:pointer; }
   .dbox-df__btn-tertiary:hover { background:var(--dbox-bg-neutral); }
   .dbox-df__btn-primary { height:32px;padding:0 var(--dbox-space-2);background:var(--dbox-accent);border:none;border-radius:var(--dbox-radius-sm);font-family:var(--dbox-font);font-size:var(--dbox-font-size-sm);font-weight:var(--dbox-font-weight-medium);color:var(--dbox-text-inverse);cursor:pointer; }
   .dbox-df__btn-primary:hover { background:var(--dbox-accent-hover); }
   .dbox-df__btn-primary:disabled { background:var(--dbox-text-disabled);cursor:not-allowed; }
+  
+  .dbox-df__total-range { display:none;align-items:center;gap:4px; }
+  .dbox-df__total-range.is-visible { display:flex; }
+  .dbox-df__total-range-badge { display:inline-flex;align-items:center;justify-content:center;height:20px;padding:0 8px;background:#F3F4F6;border-radius:4px;font-family:var(--dbox-font);font-size:12px;color:#111928;white-space:nowrap; }
+  .dbox-df__total-range-badge b { font-weight:600;margin-right:2px; }
   .dbox-df__chip-row { min-height:26px; }
   .dbox-df__chip { display:inline-flex;align-items:center;gap:5px;padding:4px var(--dbox-space-1-5);border-radius:var(--dbox-radius-lg);background:var(--dbox-bg-neutral);border:1px solid var(--dbox-border-subtle);font-size:12px;color:var(--dbox-text-secondary); }
   .dbox-df__chip-dot { width:4px;height:4px;border-radius:var(--dbox-radius-full);background:var(--dbox-border-default);flex-shrink:0; }
@@ -260,6 +265,44 @@ const BP = { ...B, background: "#E5E7EB", border: "1px solid #D1D5DB", color: "#
 const selSt = { width: "100%", height: 40, padding: "8px 12px", fontSize: 14, fontFamily: "Inter, sans-serif", fontWeight: 400, lineHeight: "20px", color: "#111928", background: "#FAFAFA", border: "1px solid #D1D5DB", borderRadius: 8, boxSizing: "border-box", outline: "none" };
 
 /* ═══ MAIN COMPONENT ═══ */
+function ExportButton({ onSaveAsList }) {
+  const [expOpen, setExpOpen] = React.useState(false);
+  const expRef = React.useRef(null);
+  React.useEffect(() => {
+    if (!expOpen) return;
+    const h = (e) => { if (expRef.current && !expRef.current.contains(e.target)) setExpOpen(false); };
+    document.addEventListener("mousedown", h);
+    return () => document.removeEventListener("mousedown", h);
+  }, [expOpen]);
+  const iconExport = <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M2.5 4C2.77614 4 3 4.22386 3 4.5V15.5C3 15.7761 2.77614 16 2.5 16C2.22386 16 2 15.7761 2 15.5V4.5C2 4.22386 2.22386 4 2.5 4ZM5 10C5 9.72386 5.22386 9.5 5.5 9.5H16.2929L13.1464 6.35355C12.9512 6.15829 12.9512 5.84171 13.1464 5.64645C13.3417 5.45118 13.6583 5.45118 13.8536 5.64645L17.8536 9.64645C17.9061 9.69898 17.9445 9.76028 17.9688 9.82563C17.989 9.87992 18 9.93867 18 10C18 10.0613 17.989 10.1201 17.9687 10.1744C17.9445 10.2397 17.9061 10.301 17.8536 10.3536L13.8536 14.3536C13.6583 14.5488 13.3417 14.5488 13.1464 14.3536C12.9512 14.1583 12.9512 13.8417 13.1464 13.6465L16.2929 10.5H5.5C5.22386 10.5 5 10.2761 5 10Z" fill="#111928"/></svg>;
+  const iconShare = <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M11 10C12.1046 10 13 10.8954 13 12H12.5C12.3247 12 12.1564 12.0301 12 12.0854V12C12 11.4477 11.5523 11 11 11H4C3.44772 11 3 11.4477 3 12V13.5C3 14.9071 4.57862 16 7.5 16C9.06314 16 10.2419 15.6871 11 15.1806V16.3174C10.0958 16.7527 8.91115 17 7.5 17C4.08805 17 2 15.5544 2 13.5V12C2 10.8954 2.89543 10 4 10H11ZM17.5 12C17.6753 12 17.8436 12.0301 18 12.0854V12C18 10.8954 17.1046 10 16 10L13.2353 9.99912C13.4937 10.2876 13.6971 10.6265 13.829 10.9991L16 11C16.5523 11 17 11.4477 17 12H17.5ZM7.5 2C9.433 2 11 3.567 11 5.5C11 7.433 9.433 9 7.5 9C5.567 9 4 7.433 4 5.5C4 3.567 5.567 2 7.5 2ZM7.5 3C6.11929 3 5 4.11929 5 5.5C5 6.88071 6.11929 8 7.5 8C8.88071 8 10 6.88071 10 5.5C10 4.11929 8.88071 3 7.5 3ZM14.5 4C15.8807 4 17 5.11929 17 6.5C17 7.88071 15.8807 9 14.5 9C13.1193 9 12 7.88071 12 6.5C12 5.11929 13.1193 4 14.5 4ZM14.5 5C13.6716 5 13 5.67157 13 6.5C13 7.32843 13.6716 8 14.5 8C15.3284 8 16 7.32843 16 6.5C16 5.67157 15.3284 5 14.5 5ZM12.5 13C12.2239 13 12 13.2239 12 13.5C12 13.7761 12.2239 14 12.5 14H17.5C17.7761 14 18 13.7761 18 13.5C18 13.2239 17.7761 13 17.5 13H12.5ZM12.5 15C12.2239 15 12 15.2239 12 15.5C12 15.7761 12.2239 16 12.5 16H17.5C17.7761 16 18 15.7761 18 15.5C18 15.2239 17.7761 15 17.5 15H12.5ZM12.5 17C12.2239 17 12 17.2239 12 17.5C12 17.7761 12.2239 18 12.5 18H17.5C17.7761 18 18 17.7761 18 17.5C18 17.2239 17.7761 17 17.5 17H12.5Z" fill="#111928"/></svg>;
+  const iconOpen = <svg viewBox="0 0 20 20" fill="none" width="20" height="20"><path d="M6 4C4.89543 4 4 4.89543 4 6V14C4 15.1046 4.89543 16 6 16H14C15.1046 16 16 15.1046 16 14V11.5C16 11.2239 16.2239 11 16.5 11C16.7761 11 17 11.2239 17 11.5V14C17 15.6569 15.6569 17 14 17H6C4.34315 17 3 15.6569 3 14V6C3 4.34315 4.34315 3 6 3H8.5C8.77614 3 9 3.22386 9 3.5C9 3.77614 8.77614 4 8.5 4H6ZM11 3.5C11 3.22386 11.2239 3 11.5 3H16.5C16.7761 3 17 3.22386 17 3.5V8.5C17 8.77614 16.7761 9 16.5 9C16.2239 9 16 8.77614 16 8.5V4.70711L11.8536 8.85355C11.6583 9.04882 11.3417 9.04882 11.1464 8.85355C10.9512 8.65829 10.9512 8.34171 11.1464 8.14645L15.2929 4H11.5C11.2239 4 11 3.77614 11 3.5Z" fill="#111928"/></svg>;
+  const items = [
+    { label: "Export as CSV", icon: iconExport },
+    { label: "Save as List", icon: iconShare, action: onSaveAsList },
+    { label: "View exports", icon: iconOpen },
+  ];
+  return (
+    <div ref={expRef} style={{ position: "relative" }}>
+      <button className="dbox-df__compare-btn" onClick={() => setExpOpen(o => !o)} style={{ background: expOpen ? "#F3F4F6" : undefined }}>
+        Export
+        <svg width="10" height="6" viewBox="0 0 10 6" fill="none" style={{ transition: "transform 0.15s", transform: expOpen ? "rotate(180deg)" : "rotate(0deg)" }}><path d="M0.2 0.24C0.48 -0.06 0.96 -0.08 1.26 0.2L5 3.73L8.74 0.2C9.04 -0.08 9.52 -0.06 9.8 0.24C10.08 0.54 10.06 1.02 9.76 1.3L5.51 5.3C5.22 5.57 4.78 5.57 4.49 5.3L0.24 1.3C-0.06 1.02 -0.08 0.54 0.2 0.24Z" fill="currentColor"/></svg>
+      </button>
+      {expOpen && (
+        <div style={{ position: "absolute", top: "calc(100% + 6px)", right: 0, minWidth: 200, background: "#FFF", border: "1px solid #E5E7EB", borderRadius: 8, boxShadow: "0 4px 6px -1px rgba(0,0,0,0.1), 0 2px 4px -2px rgba(0,0,0,0.05)", zIndex: 100, padding: "8px 0", display: "flex", flexDirection: "column" }}>
+          {items.map(({ label, icon, action }) => (
+            <button key={label} onClick={() => { setExpOpen(false); if (action) action(); }} style={{ display: "flex", alignItems: "center", gap: 8, width: "100%", height: 40, padding: "8px 16px", background: "none", border: "none", cursor: "pointer", fontFamily: "Inter, sans-serif", fontSize: 14, fontWeight: 500, color: "#111928", textAlign: "left", whiteSpace: "nowrap" }}
+              onMouseEnter={e => e.currentTarget.style.background="#F3F4F6"}
+              onMouseLeave={e => e.currentTarget.style.background="none"}>
+              {icon}{label}
+            </button>
+          ))}
+        </div>
+      )}
+    </div>
+  );
+}
+
 window.__App__ = function SupporterSegmentation() {
   const PER = 25, mainRef = useRef(null), mfSnap = useRef(null);
   const [sticky, setSticky] = useState(false);
@@ -287,7 +330,7 @@ window.__App__ = function SupporterSegmentation() {
   const [ctryQ, setCtryQ] = useState("");
   const [ctryOpen, setCtryOpen] = useState(false);
   const ctryRef = useRef(null);
-  const [dateFilter, setDateFilter] = useState({ qualifier: "any", startDate: null, endDate: null, presetLabel: null });
+  const [dateFilter, setDateFilter] = useState({ qualifier: "any", startDate: null, endDate: null });
 
   const setMf = (k, v) => setMfF((p) => ({ ...p, [k]: v }));
   const togA = (k, v) => setMfF((p) => ({ ...p, [k]: p[k].includes(v) ? p[k].filter((x) => x !== v) : [...p[k], v] }));
@@ -306,6 +349,9 @@ window.__App__ = function SupporterSegmentation() {
   const FLAT_COLUMNS = ALL_COLUMNS.flatMap((c) => c.children ? [c, ...c.children] : [c]);
   const DEFAULT_COLS = ["firstName","lastName","email","lastDonationAt","totalDonated","numDonations","location","address","city","state","zip","country"];
   const [drawerOpen, setDrawerOpen] = useState(false);
+  const [saveListOpen, setSaveListOpen] = useState(false);
+  const [listName, setListName] = useState("");
+  const [listDesc, setListDesc] = useState("");
   const [drawerClosing, setDrawerClosing] = useState(false);
   const [drawerCols, setDrawerCols] = useState([...DEFAULT_COLS]);
   const [visibleCols, setVisibleCols] = useState([...DEFAULT_COLS]);
@@ -327,59 +373,6 @@ window.__App__ = function SupporterSegmentation() {
   const [toastOut, setToastOut] = useState(false);
   const toastTimer = useRef(null);
   const dismissToast = () => { setToastOut(true); setTimeout(() => { setToast(null); setToastOut(false); }, 350); if (toastTimer.current) clearTimeout(toastTimer.current); };
-  // Save as List
-  const [saveListOpen, setSaveListOpen] = useState(false);
-  const [saveListClosing, setSaveListClosing] = useState(false);
-  const [listName, setListName] = useState("");
-  const [listDescription, setListDescription] = useState("");
-  const [listType, setListType] = useState("dynamic");
-  const [listTypeOpen, setListTypeOpen] = useState(false);
-  function openSaveListDrawer() { setListName(""); setListDescription(""); setListType("dynamic"); setListTypeOpen(false); setSaveListClosing(false); setSaveListOpen(true); }
-  function closeSaveListDrawer() { setListTypeOpen(false); setSaveListClosing(true); setTimeout(() => { setSaveListOpen(false); setSaveListClosing(false); }, 280); }
-  function handleSaveList() {
-    if (!listName.trim()) return;
-    closeSaveListDrawer();
-    if (toastTimer.current) clearTimeout(toastTimer.current);
-    setToastOut(false);
-    setToast("list");
-    toastTimer.current = setTimeout(dismissToast, 6000);
-  }
-
-  // Export as CSV
-  const [csvFileName, setCsvFileName] = useState("");
-  function startCsvExport() {
-    const fname = "Happy-Doggo-Supporters.csv";
-    setCsvFileName(fname);
-    if (toastTimer.current) clearTimeout(toastTimer.current);
-    setToastOut(false);
-    setToast("csv-generating");
-    toastTimer.current = setTimeout(() => {
-      setToastOut(false);
-      setToast("csv-ready");
-      toastTimer.current = setTimeout(dismissToast, 6000);
-    }, 2200);
-  }
-  function downloadCsv() {
-    const cols = [
-      { k: "firstName", l: "First Name" },
-      { k: "lastName", l: "Last Name" },
-      { k: "email", l: "Email" },
-      { k: "totalDonated", l: "Total Donated" },
-      { k: "numDonations", l: "Number of Donations" },
-    ];
-    const esc = (v) => `"${String(v ?? "").replace(/"/g, '""')}"`;
-    const csvBody = [cols.map((c) => esc(c.l)).join(","), ...results.map((s) => cols.map((c) => esc(s[c.k])).join(","))].join("\r\n");
-    const blob = new Blob([csvBody], { type: "text/csv;charset=utf-8;" });
-    const url = URL.createObjectURL(blob);
-    const a = document.createElement("a");
-    a.href = url;
-    a.download = csvFileName || "Supporters-Export.csv";
-    document.body.appendChild(a);
-    a.click();
-    document.body.removeChild(a);
-    URL.revokeObjectURL(url);
-    dismissToast();
-  }
 
   function openDrawer() {
     drawerSnapshot.current = [...visibleCols];
@@ -448,15 +441,16 @@ window.__App__ = function SupporterSegmentation() {
   useEffect(() => { const el = mainRef.current; if (!el) return; const h = () => setSticky(el.scrollTop > 80); el.addEventListener("scroll", h, { passive: true }); return () => el.removeEventListener("scroll", h); }, []);
 
   useEffect(() => {
-    window.__dboxDateFilterChange = ({ qualifier, startDate, endDate, presetLabel }) => {
-      setDateFilter({ qualifier: qualifier || "any", startDate: startDate || null, endDate: endDate || null, presetLabel: presetLabel || null });
+    window.__dboxDateFilterChange = ({ qualifier, startDate, endDate }) => {
+      setDateFilter({ qualifier: qualifier || "any", startDate: startDate || null, endDate: endDate || null });
     };
     return () => { window.__dboxDateFilterChange = null; };
   }, []);
 
   const parseDate = (str) => {
     if (!str) return null;
-    const p = str.split("/");
+    if (str.includes('-')) { const p = str.split('-'); return new Date(+p[0], +p[1]-1, +p[2]); }
+    const p = str.split('/');
     if (p[0].length === 4) return new Date(+p[0], +p[1]-1, +p[2]);
     return new Date(+p[2], +p[0]-1, +p[1]);
   };
@@ -629,7 +623,7 @@ Find donors through their last gift">Last</button>
                 <div style={{ position: "relative" }} id="dbox-pop-anchor">
                   <div className="dbox-df__group" id="dbox-time-strip">
                     <button className="dbox-df__btn" data-t="custom" id="dbox-custom-btn"><svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 12 12" fill="none" style={{flexShrink:0}}><path d="M3.24848 6.99696C3.66186 6.99696 3.99696 6.66186 3.99696 6.24848C3.99696 5.83511 3.66186 5.5 3.24848 5.5C2.83511 5.5 2.5 5.83511 2.5 6.24848C2.5 6.66186 2.83511 6.99696 3.24848 6.99696ZM3.99696 8.74848C3.99696 9.16186 3.66186 9.49696 3.24848 9.49696C2.83511 9.49696 2.5 9.16186 2.5 8.74848C2.5 8.33511 2.83511 8 3.24848 8C3.66186 8 3.99696 8.33511 3.99696 8.74848ZM6.00043 6.99696C6.41381 6.99696 6.74892 6.66186 6.74892 6.24848C6.74892 5.83511 6.41381 5.5 6.00043 5.5C5.58706 5.5 5.25195 5.83511 5.25195 6.24848C5.25195 6.66186 5.58706 6.99696 6.00043 6.99696ZM6.74892 8.74848C6.74892 9.16186 6.41381 9.49696 6.00043 9.49696C5.58706 9.49696 5.25195 9.16186 5.25195 8.74848C5.25195 8.33511 5.58706 8 6.00043 8C6.41381 8 6.74892 8.33511 6.74892 8.74848ZM8.74848 6.99696C9.16186 6.99696 9.49696 6.66186 9.49696 6.24848C9.49696 5.83511 9.16186 5.5 8.74848 5.5C8.33511 5.5 8 5.83511 8 6.24848C8 6.66186 8.33511 6.99696 8.74848 6.99696ZM12 2.5C12 1.11929 10.8807 0 9.5 0H2.5C1.11929 0 0 1.11929 0 2.5V9.5C0 10.8807 1.11929 12 2.5 12H9.5C10.8807 12 12 10.8807 12 9.5V2.5ZM1 4H11V9.5C11 10.3284 10.3284 11 9.5 11H2.5C1.67157 11 1 10.3284 1 9.5V4ZM2.5 1H9.5C10.3284 1 11 1.67157 11 2.5V3H1V2.5C1 1.67157 1.67157 1 2.5 1Z" fill="currentColor"/></svg>Custom</button>
-                    <button className="dbox-df__btn" data-t="today" data-tooltip="Last 24 Hours">24H</button>
+                    <button className="dbox-df__btn" data-t="today" data-tooltip="Last 24 Hours" style={{ display: "none" }}>24H</button>
                     <button className="dbox-df__btn" data-t="7d" data-tooltip="Last 7 Days">7D</button>
                     <button className="dbox-df__btn" data-t="30d" data-tooltip="Last 30 Days">30D</button>
                     <button className="dbox-df__btn" data-t="3m" data-tooltip="Last 3 Months">3M</button>
@@ -640,15 +634,17 @@ Find donors through their last gift">Last</button>
                     <div className="dbox-df__pop-body">
                       <div className="dbox-df__pop-left" id="dbox-radio-list">
                         <div className="dbox-df__radio-row" data-p="alltime"><div className="dbox-df__radio-outer"><div className="dbox-df__radio-dot"></div></div><span className="dbox-df__radio-label">All time</span></div><div className="dbox-df__radio-row" data-p="custom"><div className="dbox-df__radio-outer"><div className="dbox-df__radio-dot"></div></div><span className="dbox-df__radio-label">Custom date range</span></div>
-                        <div className="dbox-df__radio-row" data-p="rtoday"><div className="dbox-df__radio-outer"><div className="dbox-df__radio-dot"></div></div><span className="dbox-df__radio-label">Today</span></div><div className="dbox-df__radio-row" data-p="yesterday"><div className="dbox-df__radio-outer"><div className="dbox-df__radio-dot"></div></div><span className="dbox-df__radio-label">Yesterday</span></div><div className="dbox-df__radio-row" data-p="mtd"><div className="dbox-df__radio-outer"><div className="dbox-df__radio-dot"></div></div><span className="dbox-df__radio-label">Month to date</span></div>
-                        <div className="dbox-df__radio-row" data-p="ytd"><div className="dbox-df__radio-outer"><div className="dbox-df__radio-dot"></div></div><span className="dbox-df__radio-label">Year to date</span></div>
+                        <div className="dbox-df__radio-row" data-p="rtoday"><div className="dbox-df__radio-outer"><div className="dbox-df__radio-dot"></div></div><span className="dbox-df__radio-label">Today</span></div><div className="dbox-df__radio-row" data-p="mtd"><div className="dbox-df__radio-outer"><div className="dbox-df__radio-dot"></div></div><span className="dbox-df__radio-label">Month to date</span></div>
+                        <div className="dbox-df__radio-row" data-p="qtd"><div className="dbox-df__radio-outer"><div className="dbox-df__radio-dot"></div></div><span className="dbox-df__radio-label">Quarter to date</span></div><div className="dbox-df__radio-row" data-p="ytd"><div className="dbox-df__radio-outer"><div className="dbox-df__radio-dot"></div></div><span className="dbox-df__radio-label">Year to date</span></div>
                         <div className="dbox-df__radio-row" data-p="lastyear"><div className="dbox-df__radio-outer"><div className="dbox-df__radio-dot"></div></div><span className="dbox-df__radio-label">Last Year (2025)</span></div>
                       </div>
                       <div className="dbox-df__pop-divider"></div>
                       <div className="dbox-df__pop-right">
-                        <p className="dbox-df__pop-hint">Donations that occurred during this time</p>
-                        <div className="dbox-df__field"><label className="dbox-df__label" htmlFor="dbox-start-date">Start Date</label><input className="dbox-df__input" type="text" id="dbox-start-date" placeholder="yyyy/mm/dd" /></div>
-                        <div className="dbox-df__field"><label className="dbox-df__label" htmlFor="dbox-end-date">End Date</label><input className="dbox-df__input" type="text" id="dbox-end-date" placeholder="yyyy/mm/dd" /></div>
+                        <div className="dbox-df__field"><label className="dbox-df__label" htmlFor="dbox-start-date">Start Date</label><input className="dbox-df__input" type="date" id="dbox-start-date" /></div>
+                        <div className="dbox-df__field"><label className="dbox-df__label" htmlFor="dbox-end-date">End Date</label><input className="dbox-df__input" type="date" id="dbox-end-date" /></div>
+                        <div className="dbox-df__total-range" id="dbox-total-range">
+                          <div className="dbox-df__total-range-badge"><b>Total Range:</b><span id="dbox-total-range-label"></span></div>
+                        </div>
                       </div>
                     </div>
                     <div className="dbox-df__footer"><button className="dbox-df__btn-tertiary" id="dbox-custom-clear">Clear</button><button className="dbox-df__btn-primary" id="dbox-custom-apply" disabled>Apply</button></div>
@@ -682,40 +678,7 @@ Find donors through their last gift">Last</button>
                 <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M1 1.87C1 1.39 1.39 1 1.87 1H3.62C4.1 1 4.5 1.39 4.5 1.87V12.37C4.5 12.86 4.1 13.25 3.62 13.25H1.87C1.39 13.25 1 12.86 1 12.37V1.87ZM3.62 1.87H1.87V12.37H3.62V1.87ZM5.37 1.87C5.37 1.39 5.77 1 6.25 1H8C8.48 1 8.87 1.39 8.87 1.87V9.7L8 10.57V1.87H6.25V12.37H6.66L6.44 13.25H6.25C5.77 13.25 5.37 12.86 5.37 12.37V1.87ZM13.25 1.87V6.25C12.95 6.27 12.65 6.33 12.37 6.45V1.87H10.62V7.95L9.75 8.82V1.87C9.75 1.39 10.14 1 10.62 1H12.37C12.86 1 13.25 1.39 13.25 1.87ZM7.98 11.83L12.21 7.6C12.85 6.96 13.88 6.96 14.52 7.6 15.16 8.24 15.16 9.28 14.52 9.92L10.3 14.14C10.05 14.39 9.74 14.56 9.4 14.65L8.09 14.98C7.52 15.12 7.01 14.6 7.15 14.03L7.48 12.72C7.56 12.38 7.74 12.08 7.98 11.83Z" fill="currentColor" /></svg>
                 Edit Columns
               </button>
-              {(() => {
-                const [expOpen, setExpOpen] = React.useState(false);
-                const expRef = React.useRef(null);
-                React.useEffect(() => {
-                  if (!expOpen) return;
-                  const h = (e) => { if (expRef.current && !expRef.current.contains(e.target)) setExpOpen(false); };
-                  document.addEventListener("mousedown", h);
-                  return () => document.removeEventListener("mousedown", h);
-                }, [expOpen]);
-                return (
-                  <div ref={expRef} style={{ position: "relative" }}>
-                    <button className="dbox-df__compare-btn" onClick={() => setExpOpen(o => !o)} style={{ background: expOpen ? "#F3F4F6" : undefined }}>
-                      Export
-                      <svg width="10" height="6" viewBox="0 0 10 6" fill="none" style={{ transition: "transform 0.15s", transform: expOpen ? "rotate(180deg)" : "rotate(0deg)" }}><path d="M0.2 0.24C0.48 -0.06 0.96 -0.08 1.26 0.2L5 3.73L8.74 0.2C9.04 -0.08 9.52 -0.06 9.8 0.24C10.08 0.54 10.06 1.02 9.76 1.3L5.51 5.3C5.22 5.57 4.78 5.57 4.49 5.3L0.24 1.3C-0.06 1.02 -0.08 0.54 0.2 0.24Z" fill="currentColor"/></svg>
-                    </button>
-                    {expOpen && (
-                      <div style={{ position: "absolute", top: "calc(100% + 6px)", right: 0, minWidth: 200, background: "#FFF", border: "1px solid #E5E7EB", borderRadius: 8, boxShadow: "0 4px 6px -1px rgba(0,0,0,0.1), 0 2px 4px -2px rgba(0,0,0,0.05)", zIndex: 100, padding: "8px 0", display: "flex", flexDirection: "column" }}>
-                        {[
-                          { label: "Export as CSV", icon: <svg viewBox="0 0 20 20" fill="none" width="20" height="20"><path d="M2.5 4C2.77614 4 3 4.22386 3 4.5V15.5C3 15.7761 2.77614 16 2.5 16C2.22386 16 2 15.7761 2 15.5V4.5C2 4.22386 2.22386 4 2.5 4ZM5 10C5 9.72386 5.22386 9.5 5.5 9.5H16.2929L13.1464 6.35355C12.9512 6.15829 12.9512 5.84171 13.1464 5.64645C13.3417 5.45118 13.6583 5.45118 13.8536 5.64645L17.8536 9.64645C17.9061 9.69898 17.9445 9.76028 17.9688 9.82563C17.989 9.87992 18 9.93867 18 10C18 10.0613 17.989 10.1201 17.9687 10.1744C17.9445 10.2397 17.9061 10.301 17.8536 10.3536L13.8536 14.3536C13.6583 14.5488 13.3417 14.5488 13.1464 14.3536C12.9512 14.1583 12.9512 13.8417 13.1464 13.6465L16.2929 10.5H5.5C5.22386 10.5 5 10.2761 5 10Z" fill="#111928"/></svg> },
-                          { label: "Save as List", icon: <svg viewBox="0 0 20 20" fill="none" width="20" height="20"><path d="M11 10C12.1046 10 13 10.8954 13 12H12.5C12.3247 12 12.1564 12.0301 12 12.0854V12C12 11.4477 11.5523 11 11 11H4C3.44772 11 3 11.4477 3 12V13.5C3 14.9071 4.57862 16 7.5 16C9.06314 16 10.2419 15.6871 11 15.1806V16.3174C10.0958 16.7527 8.91115 17 7.5 17C4.08805 17 2 15.5544 2 13.5V12C2 10.8954 2.89543 10 4 10H11ZM17.5 12C17.6753 12 17.8436 12.0301 18 12.0854V12C18 10.8954 17.1046 10 16 10L13.2353 9.99912C13.4937 10.2876 13.6971 10.6265 13.829 10.9991L16 11C16.5523 11 17 11.4477 17 12H17.5ZM7.5 2C9.433 2 11 3.567 11 5.5C11 7.433 9.433 9 7.5 9C5.567 9 4 7.433 4 5.5C4 3.567 5.567 2 7.5 2ZM7.5 3C6.11929 3 5 4.11929 5 5.5C5 6.88071 6.11929 8 7.5 8C8.88071 8 10 6.88071 10 5.5C10 4.11929 8.88071 3 7.5 3ZM14.5 4C15.8807 4 17 5.11929 17 6.5C17 7.88071 15.8807 9 14.5 9C13.1193 9 12 7.88071 12 6.5C12 5.11929 13.1193 4 14.5 4ZM14.5 5C13.6716 5 13 5.67157 13 6.5C13 7.32843 13.6716 8 14.5 8C15.3284 8 16 7.32843 16 6.5C16 5.67157 15.3284 5 14.5 5ZM12.5 13C12.2239 13 12 13.2239 12 13.5C12 13.7761 12.2239 14 12.5 14H17.5C17.7761 14 18 13.7761 18 13.5C18 13.2239 17.7761 13 17.5 13H12.5ZM12.5 15C12.2239 15 12 15.2239 12 15.5C12 15.7761 12.2239 16 12.5 16H17.5C17.7761 16 18 15.7761 18 15.5C18 15.2239 17.7761 15 17.5 15H12.5ZM12.5 17C12.2239 17 12 17.2239 12 17.5C12 17.7761 12.2239 18 12.5 18H17.5C17.7761 18 18 17.7761 18 17.5C18 17.2239 17.7761 17 17.5 17H12.5Z" fill="#111928"/></svg> },
-                          { label: "View exports", icon: <svg viewBox="0 0 20 20" fill="none" width="20" height="20"><path d="M6 4C4.89543 4 4 4.89543 4 6V14C4 15.1046 4.89543 16 6 16H14C15.1046 16 16 15.1046 16 14V11.5C16 11.2239 16.2239 11 16.5 11C16.7761 11 17 11.2239 17 11.5V14C17 15.6569 15.6569 17 14 17H6C4.34315 17 3 15.6569 3 14V6C3 4.34315 4.34315 3 6 3H8.5C8.77614 3 9 3.22386 9 3.5C9 3.77614 8.77614 4 8.5 4H6ZM11 3.5C11 3.22386 11.2239 3 11.5 3H16.5C16.7761 3 17 3.22386 17 3.5V8.5C17 8.77614 16.7761 9 16.5 9C16.2239 9 16 8.77614 16 8.5V4.70711L11.8536 8.85355C11.6583 9.04882 11.3417 9.04882 11.1464 8.85355C10.9512 8.65829 10.9512 8.34171 11.1464 8.14645L15.2929 4H11.5C11.2239 4 11 3.77614 11 3.5Z" fill="#111928"/></svg> },
-                        ].map(({ label, icon }) => (
-                          <button key={label} onClick={() => { setExpOpen(false); if (label === "Save as List") openSaveListDrawer(); else if (label === "Export as CSV") startCsvExport(); }} style={{ display: "flex", alignItems: "center", gap: 8, width: "100%", height: 40, padding: "8px 16px", background: "none", border: "none", cursor: "pointer", fontFamily: "Inter, sans-serif", fontSize: 14, fontWeight: 500, color: "#111928", textAlign: "left", whiteSpace: "nowrap" }}
-                            onMouseEnter={e => e.currentTarget.style.background = "#F3F4F6"}
-                            onMouseLeave={e => e.currentTarget.style.background = "none"}>
-                            {icon}
-                            {label}
-                          </button>
-                        ))}
-                      </div>
-                    )}
-                  </div>
-                );
-              })()}
+              <ExportButton onSaveAsList={() => setTimeout(() => setSaveListOpen(true), 0)} />
             </div>
           </div>
 
@@ -937,6 +900,110 @@ Find donors through their last gift">Last</button>
             </>
           )}
 
+
+          {/* SAVE AS LIST DRAWER */}
+          {saveListOpen && (
+            <div style={{ position: "fixed", inset: 0, zIndex: 60 }} onClick={() => setSaveListOpen(false)}>
+              <div onClick={e => e.stopPropagation()} style={{ position: "absolute", top: 0, right: 0, bottom: 0, width: 400, background: "#FFF", borderLeft: "1px solid #D1D5DB", boxShadow: "0 10px 15px -3px rgba(0,0,0,0.1), 0 4px 6px rgba(0,0,0,0.05)", display: "flex", flexDirection: "column", animation: "slideIn .2s ease" }}>
+                {/* Header */}
+                <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", padding: "16px", borderBottom: "1px solid #D1D5DB", flexShrink: 0 }}>
+                  <span style={{ fontSize: 18, fontWeight: 600, color: "#111928", lineHeight: "28px" }}>Save List</span>
+                  <button onClick={() => setSaveListOpen(false)} style={{ display: "flex", alignItems: "center", justifyContent: "center", width: 32, height: 32, background: "none", border: "none", borderRadius: 4, cursor: "pointer", padding: 8 }}
+                    onMouseEnter={e => e.currentTarget.style.background="#F3F4F6"}
+                    onMouseLeave={e => e.currentTarget.style.background="none"}>
+                    <svg viewBox="0 0 16 16" fill="none" width="16" height="16"><path d="M2.39705 2.55379L2.46967 2.46967C2.73594 2.2034 3.1526 2.1792 3.44621 2.39705L3.53033 2.46967L8 6.939L12.4697 2.46967C12.7626 2.17678 13.2374 2.17678 13.5303 2.46967C13.8232 2.76256 13.8232 3.23744 13.5303 3.53033L9.061 8L13.5303 12.4697C13.7966 12.7359 13.8208 13.1526 13.6029 13.4462L13.5303 13.5303C13.2641 13.7966 12.8474 13.8208 12.5538 13.6029L12.4697 13.5303L8 9.061L3.53033 13.5303C3.23744 13.8232 2.76256 13.8232 2.46967 13.5303C2.17678 13.2374 2.17678 12.7626 2.46967 12.4697L6.939 8L2.46967 3.53033C2.2034 3.26406 2.1792 2.8474 2.39705 2.55379Z" fill="#111928"/></svg>
+                  </button>
+                </div>
+
+                {/* Body */}
+                <div style={{ flex: 1, overflowY: "auto", padding: "24px 16px", display: "flex", flexDirection: "column", gap: 24 }}>
+
+                  {/* Section title */}
+                  <span style={{ fontSize: 16, fontWeight: 600, color: "#111928", lineHeight: "24px" }}>List Information</span>
+
+                  {/* Form */}
+                  <div style={{ display: "flex", flexDirection: "column", gap: 24 }}>
+                    {/* List Name */}
+                    <div style={{ display: "flex", flexDirection: "column", gap: 8 }}>
+                      <label style={{ fontSize: 12, fontWeight: 500, color: "#1F2A37", lineHeight: "16px" }}>List Name *</label>
+                      <input value={listName} onChange={e => setListName(e.target.value)} placeholder="Enter a name for this list" style={{ height: 40, padding: "8px 12px", background: "#FAFAFA", border: "1px solid #D1D5DB", borderRadius: 8, fontSize: 14, fontWeight: 400, color: "#111928", fontFamily: "Inter, sans-serif", outline: "none", boxSizing: "border-box", width: "100%" }}
+                        onFocus={e => e.target.style.borderColor="#128AED"}
+                        onBlur={e => e.target.style.borderColor="#D1D5DB"} />
+                    </div>
+
+                    {/* Description */}
+                    <div style={{ display: "flex", flexDirection: "column", gap: 8 }}>
+                      <label style={{ fontSize: 12, fontWeight: 500, color: "#1F2A37", lineHeight: "16px" }}>Description</label>
+                      <textarea value={listDesc} onChange={e => setListDesc(e.target.value)} placeholder="Enter a description" rows={3} style={{ padding: 12, background: "#FAFAFA", border: "1px solid #D1D5DB", borderRadius: 8, fontSize: 14, fontWeight: 400, color: "#111928", fontFamily: "Inter, sans-serif", outline: "none", resize: "vertical", boxSizing: "border-box", width: "100%", lineHeight: "20px" }}
+                        onFocus={e => e.target.style.borderColor="#128AED"}
+                        onBlur={e => e.target.style.borderColor="#D1D5DB"} />
+                    </div>
+
+                    {/* List Type */}
+                    <div style={{ display: "flex", flexDirection: "column", gap: 8, width: "100%" }}>
+                      <label style={{ fontSize: 12, fontWeight: 500, color: "#1F2A37", lineHeight: "16px" }}>List Type</label>
+                      <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", height: 40, padding: "8px 12px", background: "#FAFAFA", border: "1px solid #D1D5DB", borderRadius: 8, cursor: "pointer", boxSizing: "border-box" }}>
+                        <span style={{ fontSize: 14, fontWeight: 400, color: "#111928" }}>Dynamic</span>
+                        <svg viewBox="0 0 16 16" fill="none" width="16" height="16"><path d="M3.20041 5.73966C3.48226 5.43613 3.95681 5.41856 4.26034 5.70041L8 9.22652L11.7397 5.70041C12.0432 5.41856 12.5177 5.43613 12.7996 5.73966C13.0815 6.0432 13.0639 6.51775 12.7603 6.7996L8.51034 10.7996C8.22258 11.0668 7.77743 11.0668 7.48967 10.7996L3.23966 6.7996C2.93613 6.51775 2.91856 6.0432 3.20041 5.73966Z" fill="#111928"/></svg>
+                      </div>
+                      <span style={{ fontSize: 12, fontWeight: 400, color: "#6B7280", lineHeight: "16px" }}>Dynamic lists automatically update supporters in real time as they match the selected filters.</span>
+                    </div>
+                  </div>
+
+                  {/* Selected Filters */}
+                  {(() => {
+                    const chips = [];
+                    if (dateFilter.startDate && dateFilter.endDate) {
+                      const label = dateFilter.startDate + " – " + dateFilter.endDate;
+                      chips.push({ label, accent: true });
+                    }
+                    if (dateFilter.qualifier && dateFilter.qualifier !== "any") chips.push({ label: dateFilter.qualifier === "first" ? "First donation" : "Last donation" });
+                    if (dType === "recurring") chips.push({ label: "Recurring" });
+                    if (dType === "onetime") chips.push({ label: "One-time" });
+                    if (minA) chips.push({ label: "Min $" + minA });
+                    if (maxA) chips.push({ label: "Max $" + maxA });
+                    if (search) chips.push({ label: "Search: " + search });
+                    if (chips.length === 0) return null;
+                    return (
+                      <div style={{ display: "flex", flexDirection: "column", gap: 12 }}>
+                        <div style={{ display: "flex", flexDirection: "column", gap: 8 }}>
+                          <span style={{ fontSize: 12, fontWeight: 500, color: "#1F2A37", lineHeight: "16px" }}>Selected Filters</span>
+                          <div style={{ display: "flex", flexWrap: "wrap", gap: 8 }}>
+                            {chips.map((chip, i) => (
+                              <div key={i} style={{ display: "inline-flex", alignItems: "center", gap: 4, height: 20, padding: "0 8px", borderRadius: 4, background: chip.accent ? "#E0EEFF" : "#F3F4F6" }}>
+                                {chip.accent && <svg viewBox="0 0 12 12" fill="none" width="12" height="12"><path d="M2 2.5C2 2.22386 2.22386 2 2.5 2C2.77614 2 3 2.22386 3 2.5V3.35418C3.73294 2.52375 4.80531 2 6 2C8.20914 2 10 3.79086 10 6C10 8.20914 8.20914 10 6 10C3.9754 10 2.30211 8.49584 2.03669 6.54406C1.9961 6.24556 2.24421 6 2.54545 6C2.79649 6 2.99638 6.2047 3.03396 6.45291C3.25232 7.89487 4.4971 9 6 9C7.65685 9 9 7.65685 9 6C9 4.34315 7.65685 3 6 3C5.1115 3 4.31321 3.38625 3.76389 4H4.5C4.77614 4 5 4.22386 5 4.5C5 4.77614 4.77614 5 4.5 5H2.5C2.22386 5 2 4.77614 2 4.5V2.5Z" fill="#1658B5"/></svg>}
+                                <span style={{ fontSize: 12, fontWeight: 500, color: chip.accent ? "#1658B5" : "#111928", lineHeight: "16px", whiteSpace: "nowrap" }}>{chip.label}</span>
+                              </div>
+                            ))}
+                          </div>
+                        </div>
+                      </div>
+                    );
+                  })()}
+
+                  {/* Current List Count */}
+                  <div style={{ display: "flex", flexDirection: "column", gap: 8 }}>
+                    <span style={{ fontSize: 12, fontWeight: 500, color: "#1F2A37", lineHeight: "16px" }}>Current List Count</span>
+                    <span style={{ fontSize: 14, fontWeight: 500, color: "#1F2A37", lineHeight: "20px" }}>{res.length} supporters</span>
+                  </div>
+
+                </div>
+
+                {/* Footer */}
+                <div style={{ display: "flex", alignItems: "center", justifyContent: "flex-end", gap: 8, padding: 16, borderTop: "1px solid #D1D5DB", flexShrink: 0 }}>
+                  <button onClick={() => setSaveListOpen(false)} style={{ height: 40, padding: "8px 24px", background: "#FFF", border: "1px solid #D1D5DB", borderRadius: 4, fontSize: 16, fontWeight: 500, color: "#1F2A37", fontFamily: "Inter, sans-serif", cursor: "pointer" }}
+                    onMouseEnter={e => e.currentTarget.style.background="#F3F4F6"}
+                    onMouseLeave={e => e.currentTarget.style.background="#FFF"}>
+                    Cancel
+                  </button>
+                  <button onClick={() => setSaveListOpen(false)} disabled={!listName} style={{ height: 40, padding: "8px 24px", background: listName ? "#128AED" : "#D1D5DB", border: "none", borderRadius: 4, fontSize: 16, fontWeight: 500, color: "#FFF", fontFamily: "Inter, sans-serif", cursor: listName ? "pointer" : "not-allowed" }}>
+                    Save List
+                  </button>
+                </div>
+              </div>
+            </div>
+          )}
+
           {/* EDIT COLUMNS DRAWER */}
           {drawerOpen && (
             <>
@@ -1029,141 +1096,9 @@ Find donors through their last gift">Last</button>
             </>
           )}
 
-          {/* SAVE AS LIST DRAWER */}
-          {saveListOpen && (() => {
-            const CTL = { active: "Active", archived: "Archived", campaigns: "Campaigns", events: "Events", inperson: "In-Person", p2p: "Peer to Peer" };
-            const QUAL_LABEL = { any: "Any donation", first: "First donation", last: "Last donation" };
-            const formatFilterDate = (str) => {
-              if (!str) return "";
-              const p = str.split("/");
-              const d = new Date(+p[0], +p[1] - 1, +p[2]);
-              return d.toLocaleDateString("en-US", { month: "short", day: "numeric", year: "numeric" });
-            };
-            const filterBadges = [];
-            if (dateFilter.qualifier && dateFilter.startDate && dateFilter.endDate) {
-              const rangeLabel = `${formatFilterDate(dateFilter.startDate)} – ${formatFilterDate(dateFilter.endDate)}`;
-              filterBadges.push({ accent: true, label: listType === "static" ? rangeLabel : (dateFilter.presetLabel || rangeLabel) });
-            }
-            if (dateFilter.qualifier) filterBadges.push({ label: QUAL_LABEL[dateFilter.qualifier] || "Any donation" });
-            cStatus.forEach((v) => filterBadges.push({ label: CTL[v] || v }));
-            cTypes.forEach((v) => filterBadges.push({ label: CTL[v] || v }));
-            selCamps.forEach((id) => { const c = CAMPS.find((x) => x.id === id); if (c) filterBadges.push({ label: c.name }); });
-            if (mf.country.length > 0) mf.country.forEach((v) => filterBadges.push({ label: v }));
-            if (mf.state) filterBadges.push({ label: mf.state });
-            if (mf.city) filterBadges.push({ label: mf.city });
-            if (mf.dMin) filterBadges.push({ label: `Min: ${mf.dMin}` });
-            if (mf.dMax) filterBadges.push({ label: `Max: ${mf.dMax}` });
-            if (mf.dhType) filterBadges.push({ label: mf.dhType.toUpperCase() });
-            ["sType","ss","mb","ed","re","ge","pr"].forEach((k) => { if (mf[k].length > 0) mf[k].forEach((v) => filterBadges.push({ label: v })); });
-            if (mf.bFrom) filterBadges.push({ label: `Born from: ${mf.bFrom}` });
-            if (mf.bTo) filterBadges.push({ label: `Born to: ${mf.bTo}` });
-            const canSave = listName.trim().length > 0;
-            return (
-              <>
-                <div onClick={() => closeSaveListDrawer()} style={{ position: "fixed", inset: 0, background: "rgba(17,25,40,.4)", zIndex: 150, animation: saveListClosing ? "fadeOut .28s ease forwards" : "fadeIn .28s ease" }} />
-                <div style={{ position: "fixed", top: 0, right: 0, bottom: 0, width: 320, maxWidth: "90vw", background: "#FFF", zIndex: 200, display: "flex", flexDirection: "column", boxShadow: "-8px 0 40px rgba(0,0,0,.12)", animation: saveListClosing ? "slideOut .28s ease forwards" : "slideIn .28s ease", borderLeft: "1px solid #D1D5DB" }}>
-                  {/* header */}
-                  <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", padding: 16, borderBottom: "1px solid #D1D5DB", flexShrink: 0 }}>
-                    <h3 style={{ fontSize: 18, fontWeight: 600, margin: 0, color: "#111928" }}>Save List</h3>
-                    <button onClick={() => closeSaveListDrawer()} style={{ width: 32, height: 32, display: "flex", alignItems: "center", justifyContent: "center", background: "none", border: "none", borderRadius: 4, cursor: "pointer", padding: 0 }}>
-                      <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M4 4l8 8M12 4l-8 8" stroke="#111928" strokeWidth="1.4" strokeLinecap="round" /></svg>
-                    </button>
-                  </div>
-
-                  {/* scrollable body */}
-                  <div style={{ flex: 1, overflowY: "auto", padding: "24px 16px", display: "flex", flexDirection: "column", gap: 24 }}>
-                    <p style={{ fontSize: 16, fontWeight: 600, color: "#111928", margin: 0 }}>List Information</p>
-
-                    <div style={{ display: "flex", flexDirection: "column", gap: 24 }}>
-                      {/* List Name */}
-                      <div style={{ display: "flex", flexDirection: "column", gap: 8 }}>
-                        <label style={{ fontSize: 12, fontWeight: 500, color: "#1F2A37" }}>List Name *</label>
-                        <input value={listName} onChange={(e) => setListName(e.target.value)} placeholder="Enter a name for this list" style={{ height: 40, padding: "8px 12px", fontSize: 14, fontFamily: "Inter, sans-serif", color: "#111928", background: "#FAFAFA", border: "1px solid #D1D5DB", borderRadius: 8, outline: "none", boxSizing: "border-box" }} />
-                      </div>
-
-                      {/* Description */}
-                      <div style={{ display: "flex", flexDirection: "column", gap: 8 }}>
-                        <label style={{ fontSize: 12, fontWeight: 500, color: "#1F2A37" }}>Description</label>
-                        <textarea value={listDescription} onChange={(e) => setListDescription(e.target.value)} placeholder="Enter a description" rows={3} style={{ padding: 12, fontSize: 14, fontFamily: "Inter, sans-serif", color: "#111928", background: "#FAFAFA", border: "1px solid #D1D5DB", borderRadius: 8, outline: "none", resize: "vertical", boxSizing: "border-box" }} />
-                      </div>
-
-                      {/* List Type */}
-                      <div style={{ display: "flex", flexDirection: "column", gap: 8, position: "relative", width: "100%" }}>
-                        <label style={{ fontSize: 12, fontWeight: 500, color: "#1F2A37" }}>List Type</label>
-                        <button onClick={() => setListTypeOpen((o) => !o)} style={{ display: "flex", alignItems: "center", justifyContent: "space-between", height: 40, padding: "8px 12px", fontSize: 14, fontFamily: "Inter, sans-serif", color: "#111928", background: "#FAFAFA", border: "1px solid #D1D5DB", borderRadius: 8, cursor: "pointer" }}>
-                          {listType === "dynamic" ? "Dynamic" : "Static"}
-                          <svg width="16" height="16" viewBox="0 0 16 16" fill="none" style={{ transition: "transform .15s", transform: listTypeOpen ? "rotate(180deg)" : "rotate(0)" }}><path d="M4 6l4 4 4-4" stroke="#111928" strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round" /></svg>
-                        </button>
-                        {listTypeOpen && (
-                          <div style={{ position: "absolute", top: "100%", left: 0, right: 0, marginTop: 4, background: "#FFF", border: "1px solid #E5E7EB", borderRadius: 8, boxShadow: "0 4px 6px -1px rgba(0,0,0,0.1), 0 2px 4px -2px rgba(0,0,0,0.05)", zIndex: 10, overflow: "hidden" }}>
-                            {[{ v: "dynamic", l: "Dynamic" }, { v: "static", l: "Static" }].map((o) => (
-                              <button key={o.v} onClick={() => { setListType(o.v); setListTypeOpen(false); }} style={{ display: "block", width: "100%", textAlign: "left", padding: "10px 12px", fontSize: 14, fontFamily: "Inter, sans-serif", color: "#111928", background: listType === o.v ? "#F3F4F6" : "#FFF", border: "none", cursor: "pointer" }}>{o.l}</button>
-                            ))}
-                          </div>
-                        )}
-                        <p style={{ fontSize: 12, color: "#6B7280", margin: 0, lineHeight: "16px" }}>
-                          {listType === "dynamic" ? "Dynamic lists automatically update supporters in real time as they match the selected filters." : "Static lists capture supporters from a fixed point in time but may be updated manually."}
-                        </p>
-                      </div>
-                    </div>
-
-                    {/* Selected Filters */}
-                    <div style={{ display: "flex", flexDirection: "column", gap: 12 }}>
-                      <div style={{ display: "flex", flexDirection: "column", gap: 8 }}>
-                        <p style={{ fontSize: 12, fontWeight: 500, color: "#1F2A37", margin: 0 }}>Selected Filters</p>
-                        <div style={{ display: "flex", flexWrap: "wrap", gap: 8 }}>
-                          {filterBadges.length === 0 ? (
-                            <span style={{ fontSize: 12, color: "#6B7280" }}>No filters applied — this list will include all supporters.</span>
-                          ) : filterBadges.map((b, i) => {
-                            const isStaticRange = b.accent && listType === "static";
-                            return (
-                            <span key={i} style={{ display: "inline-flex", alignItems: "center", gap: 4, height: 20, padding: "0 8px", background: isStaticRange ? "#FDF6B2" : b.accent ? "#E0EEFF" : "#F3F4F6", color: isStaticRange ? "#8E4B10" : b.accent ? "#1658B5" : "#111928", fontSize: 12, fontWeight: 500, borderRadius: 4, whiteSpace: "nowrap", textAlign: "center", fontFamily: "Inter, sans-serif", lineHeight: "16px" }}>
-                              {isStaticRange ? (
-                                <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M4 4V3C4 1.89543 4.89543 1 6 1C7.10457 1 8 1.89543 8 3V4H9C9.55228 4 10 4.44772 10 5V10C10 10.5523 9.55228 11 9 11H3C2.44772 11 2 10.5523 2 10V5C2 4.44772 2.44772 4 3 4H4ZM5 3V4H7V3C7 2.44772 6.55228 2 6 2C5.44772 2 5 2.44772 5 3ZM3 10H9V5H3V10Z" fill="#8E4B10" /></svg>
-                              ) : b.accent && (
-                                <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2 2.5C2 2.22386 2.22386 2 2.5 2C2.77614 2 3 2.22386 3 2.5V3.35418C3.73294 2.52375 4.80531 2 6 2C8.20914 2 10 3.79086 10 6C10 8.20914 8.20914 10 6 10C3.9754 10 2.30211 8.49584 2.03669 6.54406C1.9961 6.24556 2.24421 6 2.54545 6C2.79649 6 2.99638 6.2047 3.03396 6.45291C3.25232 7.89487 4.4971 9 6 9C7.65685 9 9 7.65685 9 6C9 4.34315 7.65685 3 6 3C5.1115 3 4.31321 3.38625 3.76389 4H4.5C4.77614 4 5 4.22386 5 4.5C5 4.77614 4.77614 5 4.5 5H2.5C2.22386 5 2 4.77614 2 4.5V2.5Z" fill="#1658B5" /></svg>
-                              )}
-                              {b.label}
-                            </span>
-                            );
-                          })}
-                        </div>
-                      </div>
-                    </div>
-
-                    {/* Counter */}
-                    <div style={{ display: "flex", flexDirection: "column", gap: 8, width: "100%" }}>
-                      <span style={{ fontSize: 12, color: "#1F2A37", fontWeight: 500 }}>Current List Count</span>
-                      <span style={{ fontSize: 14, color: "#1F2A37", fontWeight: 500 }}>{results.length} supporters</span>
-                    </div>
-                  </div>
-
-                  {/* footer */}
-                  <div style={{ display: "flex", gap: 8, alignItems: "center", justifyContent: "flex-end", padding: 16, borderTop: "1px solid #D1D5DB", flexShrink: 0 }}>
-                    <button onClick={() => closeSaveListDrawer()} style={{ height: 40, padding: "8px 24px", fontSize: 16, fontWeight: 500, color: "#1F2A37", background: "#FFF", border: "1px solid #D1D5DB", borderRadius: 4, cursor: "pointer" }}>Cancel</button>
-                    <button onClick={canSave ? handleSaveList : undefined} style={{ height: 40, padding: "8px 24px", fontSize: 16, fontWeight: 500, color: "#FFF", background: canSave ? "#128AED" : "#93C5FD", border: "none", borderRadius: 4, cursor: canSave ? "pointer" : "default" }}>Save List</button>
-                  </div>
-                </div>
-              </>
-            );
-          })()}
-
         </div>
       </div>
       {/* TOAST */}
-      {toast === "list" && (
-        <div style={{ position: "fixed", top: 32, left: "50%", transform: "translateX(-50%)", display: "flex", alignItems: "center", gap: 16, padding: 12, background: "#1F2A37", borderRadius: 8, boxShadow: "0 4px 6px -1px rgba(0,0,0,.1), 0 2px 4px -2px rgba(0,0,0,.05)", zIndex: 300, animation: toastOut ? "toastOut .35s cubic-bezier(.55,.06,.68,.19) forwards" : "toastIn .4s cubic-bezier(.21,1.02,.73,1) forwards", maxWidth: 520 }}>
-          <div style={{ width: 32, height: 32, borderRadius: 5, display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0 }}>
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M12 2C6.477 2 2 6.477 2 12s4.477 10 10 10 10-4.477 10-10S17.523 2 12 2zm4.78 7.28l-5.5 5.5a.75.75 0 01-1.06 0l-2.5-2.5a.75.75 0 111.06-1.06L10.75 13.19l4.97-4.97a.75.75 0 111.06 1.06z" fill="#0E9F6E"/></svg>
-          </div>
-          <div style={{ display: "flex", flexWrap: "wrap", alignItems: "center", gap: 3, flex: 1 }}>
-            <span style={{ fontSize: 14, fontWeight: 500, color: "#FFF", lineHeight: "20px", fontFamily: "Inter, sans-serif" }}>List "{listName}" saved successfully.</span>
-          </div>
-          <button onClick={dismissToast} style={{ width: 16, height: 16, display: "flex", alignItems: "center", justifyContent: "center", background: "none", border: "none", cursor: "pointer", padding: 0, flexShrink: 0 }}>
-            <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M3 3l6 6M9 3l-6 6" stroke="#FFF" strokeWidth="1.2" strokeLinecap="round"/></svg>
-          </button>
-        </div>
-      )}
       {toast === "ec" && (
         <div style={{ position: "fixed", top: 32, left: "50%", transform: "translateX(-50%)", display: "flex", alignItems: "center", gap: 16, padding: 12, background: "#1F2A37", borderRadius: 8, boxShadow: "0 4px 6px -1px rgba(0,0,0,.1), 0 2px 4px -2px rgba(0,0,0,.05)", zIndex: 300, animation: toastOut ? "toastOut .35s cubic-bezier(.55,.06,.68,.19) forwards" : "toastIn .4s cubic-bezier(.21,1.02,.73,1) forwards", maxWidth: 520 }}>
           <div style={{ width: 32, height: 32, borderRadius: 5, display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0 }}>
@@ -1179,40 +1114,7 @@ Find donors through their last gift">Last</button>
           </button>
         </div>
       )}
-      {toast === "csv-generating" && (
-        <div style={{ position: "fixed", top: 32, left: "50%", transform: "translateX(-50%)", display: "flex", alignItems: "center", gap: 16, padding: 12, background: "#1F2A37", borderRadius: 8, boxShadow: "0 4px 6px -1px rgba(0,0,0,.1), 0 2px 4px -2px rgba(0,0,0,.05)", zIndex: 300, animation: toastOut ? "toastOut .35s cubic-bezier(.55,.06,.68,.19) forwards" : "toastIn .4s cubic-bezier(.21,1.02,.73,1) forwards", maxWidth: 520 }}>
-          <div style={{ width: 32, height: 32, borderRadius: 5, display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0 }}>
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" className="csv-spinner">
-              <circle cx="12" cy="12" r="9" stroke="rgba(255,255,255,0.25)" strokeWidth="3" />
-              <path d="M21 12a9 9 0 00-9-9" stroke="#FFFFFF" strokeWidth="3" strokeLinecap="round" />
-            </svg>
-          </div>
-          <div style={{ display: "flex", flexWrap: "wrap", alignItems: "center", gap: 3, flex: 1 }}>
-            <span style={{ fontSize: 14, fontWeight: 500, color: "#FFF", lineHeight: "20px", fontFamily: "Inter, sans-serif" }}>Generating <em style={{ fontStyle: "italic" }}>{csvFileName}</em></span>
-          </div>
-          <button onClick={dismissToast} style={{ width: 16, height: 16, display: "flex", alignItems: "center", justifyContent: "center", background: "none", border: "none", cursor: "pointer", padding: 0, flexShrink: 0 }}>
-            <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M3 3l6 6M9 3l-6 6" stroke="#FFF" strokeWidth="1.2" strokeLinecap="round"/></svg>
-          </button>
-        </div>
-      )}
-      {toast === "csv-ready" && (
-        <div style={{ position: "fixed", top: 32, left: "50%", transform: "translateX(-50%)", display: "flex", alignItems: "center", gap: 16, padding: 12, background: "#1F2A37", borderRadius: 8, boxShadow: "0 4px 6px -1px rgba(0,0,0,.1), 0 2px 4px -2px rgba(0,0,0,.05)", zIndex: 300, animation: toastOut ? "toastOut .35s cubic-bezier(.55,.06,.68,.19) forwards" : "toastIn .4s cubic-bezier(.21,1.02,.73,1) forwards", maxWidth: 520 }}>
-          <div style={{ width: 32, height: 32, borderRadius: 5, display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0 }}>
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M6 3a2 2 0 00-2 2v14a2 2 0 002 2h12a2 2 0 002-2V9l-6-6H6z" stroke="#FFFFFF" strokeWidth="1.5" strokeLinejoin="round"/><path d="M13 3v6h6" stroke="#FFFFFF" strokeWidth="1.5" strokeLinejoin="round"/></svg>
-          </div>
-          <div style={{ display: "flex", alignItems: "center", gap: 12, flexShrink: 0 }}>
-            <span style={{ fontSize: 14, fontWeight: 500, color: "#FFF", lineHeight: "20px", fontFamily: "Inter, sans-serif", whiteSpace: "nowrap" }}><em style={{ fontStyle: "italic" }}>{csvFileName}</em> is ready to download</span>
-            <button onClick={downloadCsv} style={{ height: 32, padding: "0 16px", borderRadius: 4, background: "#128AED", border: "none", fontFamily: "Inter, sans-serif", fontSize: 14, fontWeight: 500, color: "#FFF", cursor: "pointer", flexShrink: 0, whiteSpace: "nowrap" }}
-              onMouseEnter={(e) => e.currentTarget.style.background = "#056BBF"}
-              onMouseLeave={(e) => e.currentTarget.style.background = "#128AED"}>
-              Download
-            </button>
-          </div>
-        </div>
-      )}
       <style>{`
-        @keyframes csvSpin { to { transform: rotate(360deg); } }
-        .csv-spinner { animation: csvSpin 0.8s linear infinite; transform-origin: center; }
         @keyframes slideIn { from { transform: translateX(100%); } to { transform: translateX(0); } }
         @keyframes slideOut { from { transform: translateX(0); } to { transform: translateX(100%); } }
         @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
@@ -1235,8 +1137,8 @@ root.render(React.createElement(App));
 (function initDateFilter() {
   const ROOT = document.getElementById('dbox-date-filter');
   if (!ROOT) { setTimeout(initDateFilter, 80); return; }
-  const TODAY = new Date(2026, 5, 11);
-  function fmtD(d) { return `${d.getFullYear()}/${String(d.getMonth()+1).padStart(2,'0')}/${String(d.getDate()).padStart(2,'0')}`; }
+  const TODAY = new Date();
+  function fmtD(d) { return `${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,'0')}-${String(d.getDate()).padStart(2,'0')}`; }
   function fmtH(d) { return d.toLocaleDateString('en-US', { month:'short', day:'numeric', year:'numeric' }); }
   function addDays(d, n) { const x = new Date(d); x.setDate(x.getDate() + n); return x; }
   function addMonths(d, n) { const x = new Date(d); x.setMonth(x.getMonth() + n); return x; }
@@ -1251,8 +1153,9 @@ root.render(React.createElement(App));
     mtd:      () => ({ s: new Date(TODAY.getFullYear(), TODAY.getMonth(), 1), e: new Date(TODAY) }),
     ytd:      () => ({ s: new Date(TODAY.getFullYear(), 0, 1), e: new Date(TODAY) }),
     lastyear: () => ({ s: new Date(2025, 0, 1), e: new Date(2025, 11, 31) }),
-    alltime:  () => null,
-    rtoday:   () => ({ s: addDays(TODAY, -1), e: new Date(TODAY) }),
+    alltime:  () => { const e=new Date(TODAY); const fourYrsAgo=new Date(TODAY.getFullYear()-4,TODAY.getMonth(),TODAY.getDate()); const s=new Date(fourYrsAgo.getTime()+Math.random()*(TODAY.getTime()-fourYrsAgo.getTime())); s.setHours(0,0,0,0); return { s, e }; },
+    qtd:      () => { const m=TODAY.getMonth(); const qStart=new Date(TODAY.getFullYear(), Math.floor(m/3)*3, 1); return { s:qStart, e:new Date(TODAY) }; },
+    rtoday:   () => ({ s: new Date(TODAY.getFullYear(), TODAY.getMonth(), TODAY.getDate()), e: new Date(TODAY.getFullYear(), TODAY.getMonth(), TODAY.getDate()) }),
     yesterday:() => { const y=addDays(TODAY,-1); return { s:y, e:y }; },
   };
   const Q_DEFAULTS = { any: null, first: '7d', last: '30d' };
@@ -1262,30 +1165,38 @@ root.render(React.createElement(App));
   const CMP_LABELS = { custom_range: 'Custom range', prev_year: 'Prev. year', prev_period: 'Prev. period' };
   const S = { qualifier:'any', timePreset:'custom', customApplied:true, userChangedTime:false, radioPreset:'alltime', draftStart:'', draftEnd:'', appliedRadio:'alltime', appliedStart:'', appliedEnd:'', compareRadio:'custom_range', compareDraftStart:'', compareDraftEnd:'', compareApplied:false, compareAppliedRadio:null, compareAppliedStart:'', compareAppliedEnd:'', popOpen:false, cmpOpen:false };
   const $ = id => document.getElementById(id);
+  const totalRangeWrap=$('dbox-total-range'), totalRangeLabel=$('dbox-total-range-label');
   const qualStrip=$('dbox-qual-strip'), timeStrip=$('dbox-time-strip'), popAnchor=$('dbox-pop-anchor'), customPop=$('dbox-custom-pop'), radioList=$('dbox-radio-list'), startDate=$('dbox-start-date'), endDate=$('dbox-end-date'), customClear=$('dbox-custom-clear'), customApplyBtn=$('dbox-custom-apply'), cmpWrap=$('dbox-cmp-wrap'), cmpBtn=$('dbox-cmp-btn'), cmpLabel=$('dbox-cmp-label'), cmpChev=$('dbox-cmp-chev'), cmpPop=$('dbox-cmp-pop'), cmpRadioList=$('dbox-cmp-radio-list'), cmpStart=$('dbox-cmp-start'), cmpEnd=$('dbox-cmp-end'), cmpClear=$('dbox-cmp-clear'), cmpApplyBtn=$('dbox-cmp-apply');
-  function getAppliedRange() { if (!S.timePreset) return null; if (S.timePreset !== 'custom') return RANGES[S.timePreset]?.() ?? null; if (!S.customApplied) return null; if (S.appliedRadio === 'alltime') return null; if (S.appliedRadio && S.appliedRadio !== 'custom') return RANGES[S.appliedRadio]?.() ?? null; if (S.appliedStart && S.appliedEnd) return { s: new Date(S.appliedStart.replace(/\//g,'-')), e: new Date(S.appliedEnd.replace(/\//g,'-')) }; return null; }
+  function getAppliedRange() { if (!S.timePreset) return null; if (S.timePreset !== 'custom') return RANGES[S.timePreset]?.() ?? null; if (!S.customApplied) return null; if (S.appliedRadio && S.appliedRadio !== 'custom') return RANGES[S.appliedRadio]?.() ?? null; if (S.appliedStart && S.appliedEnd) return { s: new Date(S.appliedStart.replace(/\//g,'-')), e: new Date(S.appliedEnd.replace(/\//g,'-')) }; return null; }
   function getCmpPresetRange(p) { const r = getAppliedRange(); if (!r) return null; if (p === 'prev_year') return { s: new Date(TODAY.getFullYear()-1,0,1), e: new Date(TODAY.getFullYear()-1,11,31) }; if (p === 'prev_period') { const d = diffDays(r.s,r.e); return { s:addDays(r.s,-d), e:addDays(r.s,-1) }; } return null; }
   function setActiveTimeTab(t) { timeStrip.querySelectorAll('[data-t]').forEach(x => x.classList.toggle('is-active', x.dataset.t === t)); }
   function applyQualifierDefault(q) { if (!S.userChangedTime && Q_DEFAULTS[q]) { S.timePreset=Q_DEFAULTS[q]; setActiveTimeTab(S.timePreset); } closeCustomPop(); }
   function closeCustomPop() { S.popOpen=false; customPop.classList.remove('is-open'); }
-  function openCustomPop() { S.radioPreset=S.appliedRadio||'custom'; S.draftStart=S.appliedRadio&&S.appliedRadio!=='custom'?'':S.appliedStart; S.draftEnd=S.appliedRadio&&S.appliedRadio!=='custom'?'':S.appliedEnd; syncRadioList(radioList,S.radioPreset,'data-p'); setCustomInputs(S.radioPreset); updateCustomApply(); S.popOpen=true; customPop.classList.add('is-open'); }
+  function openCustomPop() { S.radioPreset=S.appliedRadio||'custom'; S.draftStart=S.appliedRadio&&S.appliedRadio!=='custom'?'':S.appliedStart; S.draftEnd=S.appliedRadio&&S.appliedRadio!=='custom'?'':S.appliedEnd; syncRadioList(radioList,S.radioPreset,'data-p'); setCustomInputs(S.radioPreset); updateCustomApply(); updateTotalRange(); S.popOpen=true; customPop.classList.add('is-open'); }
   function syncRadioList(list, val, attr) { list.querySelectorAll(`[${attr}]`).forEach(x => x.classList.toggle('is-selected', x.getAttribute(attr)===val)); }
-  function setCustomInputs(p) { const isC=p==='custom'; const isAll=p==='alltime'; startDate.disabled=!isC; endDate.disabled=!isC; if (isC) { startDate.value=S.draftStart; endDate.value=S.draftEnd; } else if (isAll) { startDate.value=''; endDate.value=''; } else { const r=RANGES[p]?.(); if(r){ startDate.value=fmtD(r.s); endDate.value=fmtD(r.e); } } }
-  function updateCustomApply() { customApplyBtn.disabled=!(S.radioPreset==='alltime'||S.radioPreset!=='custom'||(S.draftStart&&S.draftEnd)); }
+  function setCustomInputs(p) { const isC=p==='custom'; startDate.disabled=!isC; endDate.disabled=!isC; if (isC) { startDate.value=S.draftStart; endDate.value=S.draftEnd; } else { const r=RANGES[p]?.(); if(r){ startDate.value=fmtD(r.s); endDate.value=fmtD(r.e); } } }
+  function updateCustomApply() { customApplyBtn.disabled=!(S.radioPreset==='alltime'||S.radioPreset!=='custom'||(S.draftStart&&S.draftEnd)); updateTotalRange(); }
+  function updateTotalRange() {
+    let s=null, e=null;
+    if (S.radioPreset && S.radioPreset !== 'custom') {
+      const r = RANGES[S.radioPreset]?.(); if (r){ s=r.s; e=r.e; }
+    } else if (S.radioPreset === 'custom' && S.draftStart && S.draftEnd) {
+      s = new Date(S.draftStart); e = new Date(S.draftEnd);
+    }
+    if (s && e && e >= s) {
+      const days = Math.round((e - s) / 864e5) + 1;
+      totalRangeLabel.textContent = ' ' + days + (days === 1 ? ' day' : ' days');
+      totalRangeWrap.classList.add('is-visible');
+    } else {
+      totalRangeWrap.classList.remove('is-visible');
+    }
+  }
   function closeCmpPop() { S.cmpOpen=false; cmpPop.classList.remove('is-open'); cmpChev.style.transform='rotate(0deg)'; cmpBtn.setAttribute('aria-expanded','false'); }
   function openCmpPop() { S.compareRadio=S.compareAppliedRadio||'custom_range'; syncRadioList(cmpRadioList,S.compareRadio,'data-c'); const isC=S.compareRadio==='custom_range'; cmpStart.disabled=!isC; cmpEnd.disabled=!isC; if(isC){ cmpStart.value=S.compareDraftStart||S.compareAppliedStart||''; cmpEnd.value=S.compareDraftEnd||S.compareAppliedEnd||''; } else { const r=getCmpPresetRange(S.compareRadio); if(r){ cmpStart.value=fmtD(r.s); cmpEnd.value=fmtD(r.e); } } updateCmpApply(); S.cmpOpen=true; cmpPop.classList.add('is-open'); cmpChev.style.transform='rotate(180deg)'; cmpBtn.setAttribute('aria-expanded','true'); }
   function updateCmpApply() { cmpApplyBtn.disabled=!(S.compareRadio!=='custom_range'||(S.compareDraftStart&&S.compareDraftEnd)); }
   function renderQualifier() { qualStrip.querySelectorAll('[data-q]').forEach(tab => { const active=tab.dataset.q===S.qualifier; tab.textContent=active?Q_ACTIVE[tab.dataset.q]:Q_INACTIVE[tab.dataset.q]; tab.classList.toggle('is-active',active); }); }
   function renderCompareBtn() { if(S.compareApplied&&S.compareAppliedRadio){ cmpBtn.classList.add('is-active'); cmpLabel.innerHTML=`<span class="lbl">vs </span><span class="val">${CMP_LABELS[S.compareAppliedRadio]}</span>`; } else { cmpBtn.classList.remove('is-active'); cmpLabel.innerHTML=`<span class="lbl">Compared to</span>`; } }
-  const RADIO_LABELS = { alltime:'All time', custom:'Custom', rtoday:'Today', yesterday:'Yesterday', mtd:'Month to date', ytd:'Year to date', lastyear:'Last Year (2025)' };
-  const TIME_LABELS = { today:'Last 24 Hours', '7d':'Last 7 Days', '30d':'Last 30 Days', '3m':'Last 3 Months', '6m':'Last 6 Months', '12m':'Last 12 Months' };
-  function getPresetLabel() {
-    if (!S.timePreset) return null;
-    if (S.timePreset !== 'custom') return TIME_LABELS[S.timePreset] || null;
-    if (!S.customApplied || !S.appliedRadio) return null;
-    if (S.appliedRadio === 'alltime' || S.appliedRadio === 'custom') return null;
-    return RADIO_LABELS[S.appliedRadio] || null;
-  }
+  const RADIO_LABELS = { alltime:'All time', custom:'Custom', rtoday:'Today', yesterday:'Yesterday', mtd:'Month to date', qtd:'Quarter to date', ytd:'Year to date', lastyear:'Last Year (2025)' };
   const customBtn = document.getElementById('dbox-custom-btn');
   function renderCustomBtn() {
     if (!customBtn) return;
@@ -1306,15 +1217,14 @@ root.render(React.createElement(App));
         timePreset: S.timePreset,
         startDate:  range ? fmtD(range.s) : null,
         endDate:    range ? fmtD(range.e) : null,
-        presetLabel: getPresetLabel(),
       });
     }
   }
   qualStrip.addEventListener('click', e => { const t=e.target.closest('[data-q]'); if(!t) return; if(S.qualifier===t.dataset.q){ S.qualifier=null; } else { S.qualifier=t.dataset.q; applyQualifierDefault(S.qualifier); } render(); emitChange(); });
   timeStrip.addEventListener('click', e => { const t=e.target.closest('[data-t]'); if(!t) return; const p=t.dataset.t; S.userChangedTime=true; if(p==='custom'){ S.timePreset='custom'; setActiveTimeTab('custom'); openCustomPop(); } else { if(S.timePreset===p){ S.userChangedTime=false; applyQualifierDefault(S.qualifier); emitChange(); } else { S.timePreset=p; setActiveTimeTab(p); closeCustomPop(); } render(); emitChange(); } });
   radioList.addEventListener('click', e => { const r=e.target.closest('[data-p]'); if(!r) return; S.radioPreset=r.dataset.p; syncRadioList(radioList,S.radioPreset,'data-p'); setCustomInputs(S.radioPreset); updateCustomApply(); });
-  startDate.addEventListener('input', e => { S.draftStart=e.target.value; updateCustomApply(); });
-  endDate.addEventListener('input', e => { S.draftEnd=e.target.value; updateCustomApply(); });
+  startDate.addEventListener('input', e => { S.draftStart=e.target.value; updateCustomApply(); updateTotalRange(); });
+  endDate.addEventListener('input', e => { S.draftEnd=e.target.value; updateCustomApply(); updateTotalRange(); });
   customClear.addEventListener('click', () => { S.timePreset=null; S.customApplied=false; S.appliedRadio=null; S.appliedStart=''; S.appliedEnd=''; S.radioPreset='custom'; S.draftStart=''; S.draftEnd=''; setActiveTimeTab(null); syncRadioList(radioList,'custom','data-p'); startDate.disabled=false; endDate.disabled=false; startDate.value=''; endDate.value=''; updateCustomApply(); closeCustomPop(); render(); emitChange(); });
   customApplyBtn.addEventListener('click', () => { const isEmpty=S.radioPreset==='custom'&&!S.draftStart&&!S.draftEnd; if(isEmpty){ S.timePreset=null; S.customApplied=false; setActiveTimeTab(null); closeCustomPop(); render(); return; } S.customApplied=true; S.appliedRadio=S.radioPreset; if(S.radioPreset==='custom'){ S.appliedStart=S.draftStart; S.appliedEnd=S.draftEnd; } else { const r=RANGES[S.radioPreset]?.(); if(r){ S.appliedStart=fmtD(r.s); S.appliedEnd=fmtD(r.e); } } closeCustomPop(); render(); emitChange(); });
   cmpBtn.addEventListener('click', () => { S.cmpOpen ? closeCmpPop() : openCmpPop(); });
