@@ -555,6 +555,7 @@
   .sfb-radio.is-on { border:5px solid #128AED; }
   .sfb-pop.is-freq { width:440px; padding:0; }
   .sfb-pop.is-vx { width:320px; padding:0; }
+  .sfb-pop.is-vx:has(.vx-kinds) { width:400px; }
   .vx-cond { padding:16px 16px 8px; }
   .vx-cond + .vx-search { padding-top:0; }
   .vx-cond + .vx-body { padding-top:4px; }
@@ -581,6 +582,12 @@
   .vx-list + .vx-body { border-top:1px solid #E5E7EB; }
   .vx-pair { display:flex; gap:8px; }
   .vx-pair .fq-in { flex:1; min-width:0; }
+  .vx-badge { margin-left:auto; flex-shrink:0; align-self:flex-start; margin-top:0; }
+  .vx-kinds { display:flex; gap:4px; margin:16px 16px 0; padding:2px; background:#F3F4F6; border-radius:8px; }
+  .vx-kind { flex:1; height:28px; border:0; border-radius:6px; background:none; font:500 14px/20px Inter,sans-serif; color:#6B7280; cursor:pointer; }
+  .vx-kind.is-on { background:#FFF; color:#111928; box-shadow:0 1px 2px rgba(0,0,0,.08); }
+  .vx-kind:focus-visible { outline:2px solid #128AED; outline-offset:-2px; }
+  .vx-kinds + .vx-search { padding-top:12px; }
   .vx-empty { padding:12px 8px; font-size:14px; color:#6B7280; }
   .vx-hint { padding:12px 16px 0; font-size:12px; line-height:16px; color:#6B7280; border-top:1px solid #E5E7EB; }
   .vx-foot { display:flex; justify-content:space-between; align-items:center; padding:12px 16px 16px; border-top:1px solid #E5E7EB; }
@@ -1040,6 +1047,15 @@ function sfbRetention(s) {
   return out;
 }
 const sfbOne = (v) => v ? [v] : [];
+/* Saved lists (segments) — kept in sync with the page's list state so the Lists filter always shows current lists */
+let SFB_LISTS = [];
+let sfbListDepth = 0;
+function sfbInList(l, s) {
+  if (l.type === "static") return (l.members || []).includes(s.id);
+  if (sfbListDepth > 2) return false; /* a dynamic list that references lists can't loop forever */
+  sfbListDepth += 1; try { return sfbMatch(l.state, s); } finally { sfbListDepth -= 1; }
+}
+const LIST_KIND_BADGE = { dynamic: { t: "Dynamic", bg: "#EBF4FF", c: "#1658B5" }, static: { t: "Static", bg: "#F3F4F6", c: "#374151" } };
 /* Consecutive giving years: current streak of calendar years with a gift, ending this year
    (or last year, so donors who haven't given yet this year keep their streak). */
 function sfbStreak(s) {
@@ -1064,6 +1080,13 @@ const SFB_FIELDS = {
   country:       { label: "Country", group: "Location", type: "enum", options: sfbUniq(SUPPORTERS.map((s) => s.country)), get: (s) => [s.country] },
   state:         { label: "State", group: "Location", type: "enum", options: sfbUniq(SUPPORTERS.map((s) => s.state)), get: (s) => [s.state] },
   city:          { label: "City", group: "Location", type: "enum", options: sfbUniq(SUPPORTERS.map((s) => s.city)), get: (s) => [s.city] },
+  list:          { label: "Lists", group: "Lists", type: "enum",
+                   get options() { return SFB_LISTS.map((l) => l.name); },
+                   get optDesc() { return Object.fromEntries(SFB_LISTS.map((l) => { const n = listCount(l); return [l.name, `${n} supporter${n === 1 ? "" : "s"}${l.desc ? " · " + l.desc : ""}`]; })); },
+                   optBadge: (o) => { const l = SFB_LISTS.find((x) => x.name === o); return l ? LIST_KIND_BADGE[l.type] : null; },
+                   optKind: (o) => { const l = SFB_LISTS.find((x) => x.name === o); return l ? l.type : null; },
+                   kinds: [["all", "All"], ["dynamic", "Dynamic"], ["static", "Static"]],
+                   get: (s) => SFB_LISTS.filter((l) => sfbInList(l, s)).map((l) => l.name) },
   retention:     { label: "Donor retention", group: "Donations", type: "enum", options: RETENTION, get: sfbRetention,
                    optDesc: { SYBUNT: "Some Year But Unfortunately Not This", LYBUNT: "Last Year But Unfortunately Not This", "Retained donors": "Gave last year and this year" } },
   givingStreak:  { label: "Consecutive giving years", group: "Donations", type: "number", get: sfbStreak },
@@ -1076,7 +1099,7 @@ const SFB_FIELDS = {
   pronouns:      { label: "Pronouns", group: "Personal details", type: "enum", options: PRONOUNS, get: (s) => sfbOne(s.pronouns) },
   social:        { label: "Social media", group: "Personal details", type: "enum", options: SOCIAL_NETWORKS, get: (s) => s.social || [] },
 };
-const SFB_QUICK = ["supporterType", "donationDate", "totalDonated", "frequency", "campaign"];
+const SFB_QUICK = ["supporterType", "donationDate", "totalDonated", "frequency", "campaign", "list"];
 const SFB_OPS = { is: "is", isnot: "is not", before: "before", after: "after", between: "between",
   gt: "greater than", lt: "less than", any: "is any of", none: "is none of", on: "is" };
 const sfbOpLabel = (field, o) => (SFB_FIELDS[field].groups || SFB_FIELDS[field].single) ? (o === "any" ? "is" : "is not") : SFB_OPS[o];
@@ -1238,6 +1261,7 @@ function ValEditor({ rule, onApply, focusOp }) {
   const isEnum = f.type === "enum";
   const [st, setSt] = useState(() => ({ op: rule.op || sfbDefaultOp(rule.field), val: isEnum ? [...(rule.val || [])] : (rule.val ?? ""), val2: rule.val2 ?? "" }));
   const [q, setQ] = useState("");
+  const [kind, setKind] = useState("all");
   const set = (p) => setSt((s) => ({ ...s, ...p }));
   const ok = sfbComplete({ ...rule, ...st });
   const apply = () => { if (ok) onApply(st); };
@@ -1251,14 +1275,16 @@ function ValEditor({ rule, onApply, focusOp }) {
     const row = (o) => { const on = st.val.includes(o), d = f.optDesc && f.optDesc[o];
       return <button key={o} type="button" role={f.single ? "radio" : "checkbox"} aria-checked={on} className={"vx-row" + (d ? " has-desc" : "")} onClick={() => toggle(o)}>
         <Mark on={on} radio={f.single} /><span className="vx-txt"><span className="vx-name">{o}</span>{d && <span className="vx-desc">{d}</span>}</span>
+        {f.optBadge && f.optBadge(o) && <span className="cp-badge vx-badge" style={{ background: f.optBadge(o).bg, color: f.optBadge(o).c }}>{f.optBadge(o).t}</span>}
       </button>; };
-    const opts = f.options.filter((o) => !q || o.toLowerCase().includes(q.toLowerCase()));
+    const opts = f.options.filter((o) => (!q || o.toLowerCase().includes(q.toLowerCase())) && (kind === "all" || !f.optKind || f.optKind(o) === kind));
     content = <>
-      {!f.groups && f.options.length > 6 && <div className="vx-search"><input className="fq-in" autoFocus placeholder={`Search ${f.label.toLowerCase()}`} value={q} onChange={(e) => setQ(e.target.value)} aria-label={`Search ${f.label.toLowerCase()}`} /></div>}
+      {f.kinds && <div className="vx-kinds" role="tablist" aria-label={`${f.label} type`}>{f.kinds.map(([k, l]) => <button key={k} type="button" role="tab" aria-selected={kind === k} className={"vx-kind" + (kind === k ? " is-on" : "")} onClick={() => setKind(k)}>{l}</button>)}</div>}
+      {!f.groups && (f.options.length > 6 || f.kinds) && <div className="vx-search"><input className="fq-in" autoFocus placeholder={`Search ${f.label.toLowerCase()}`} value={q} onChange={(e) => setQ(e.target.value)} aria-label={`Search ${f.label.toLowerCase()}`} /></div>}
       <div className="vx-list">
         {f.groups
           ? f.groups.map(([g, gopts]) => <div key={g} role="group" aria-label={g}><div className="vx-title">{g}</div>{gopts.map(row)}</div>)
-          : opts.length ? opts.map(row) : <div className="vx-empty">No matches for “{q}”</div>}
+          : opts.length ? opts.map(row) : <div className="vx-empty">{q ? <>No matches for “{q}”</> : f.options.length ? "No lists of this type" : `No ${f.label.toLowerCase()} yet`}</div>}
       </div>
       {f.groups && <div className="vx-hint">Matches any choice within a group, and every group you use.</div>}
     </>;
@@ -2011,8 +2037,13 @@ const SEED_LISTS = (() => {
     { id: "l1", name: "No gift in the last 30 days", desc: "Most recent gift was more than 30 days ago", type: "dynamic", state: listState([sfbNewRule("lastDonation", "before", "30d")]), search: "" },
     { id: "l2", name: "Long-time supporters", desc: "First gift on or before Dec 31, 2023", type: "dynamic", state: listState([sfbNewRule("firstDonation", "between", "", "2023-12-31")]), search: "" },
     { id: "l3", name: "Annual Gala invitees", desc: "Snapshot taken for the invitation mailing", type: "static", state: gala, search: "", members: SUPPORTERS.filter((x) => sfbMatch(gala, x)).map((x) => x.id) },
+    { id: "l4", name: "Major donors", desc: "Gave more than $10,000 in total", type: "dynamic", state: listState([sfbNewRule("totalDonated", "gt", "10000")]), search: "" },
+    { id: "l5", name: "Monthly recurring donors", desc: "Has a monthly recurring plan", type: "dynamic", state: listState([Object.assign(sfbNewRule("frequency", "any", ["Recurring donations"]), { sub: { iv: ["Monthly"] } })]), search: "" },
+    { id: "l6", name: "Year-end appeal 2025", desc: "Recipients of the December 2025 mailing", type: "static", state: listState([]), search: "", members: SUPPORTERS.filter((_, i) => i % 3 === 0).map((x) => x.id) },
+    { id: "l7", name: "Board & volunteers", desc: "Added by hand", type: "static", state: listState([]), search: "", members: SUPPORTERS.filter((_, i) => i % 9 === 4).map((x) => x.id) },
   ];
 })();
+SFB_LISTS = SEED_LISTS;
 const listCount = (l) => l.type === "static" ? l.members.length : SUPPORTERS.filter((x) => sfbMatch(l.state, x)).length;
 
 function SavedListsMenu({ lists, active, onPick }) {
@@ -2361,6 +2392,7 @@ window.__App__ = function SupporterSegmentation() {
   const [drawerOpen, setDrawerOpen] = useState(false);
   const [saveListOpen, setSaveListOpen] = useState(false);
   const [lists, setLists] = useState(SEED_LISTS);
+  SFB_LISTS = lists;
   const [activeListId, setActiveListId] = useState(null);
   const [listType, setListType] = useState("dynamic");
   const [toastMsg, setToastMsg] = useState("");
